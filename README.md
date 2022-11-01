@@ -8,4 +8,3 @@ Process to generate PAT - https://docs.github.com/en/authentication/keeping-your
 
 PAT:
 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
-
