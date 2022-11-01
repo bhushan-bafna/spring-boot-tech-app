@@ -1,0 +1,12 @@
+#Looging Configuration
+
+logging:
+  #Set logging pattern
+  pattern:
+    console: '%d{yyyy-MM-dd HH:mm:ss.SSS} %-5level - %-36logger{36} - %msg%n'
+    file: '%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n'
+  #Set logging level  
+  level:
+    root: ERROR
+    org.springframework.web: INFO
+    com.tech: INFO

@@ -1,0 +1,17 @@
+spring:
+  profiles:
+    include:
+    - logger
+    
+server:
+  servlet:
+    context-path: /tech-app
+  port: 8090
+  
+#Automatic Property Expansion Using Maven - '@project.name@' will read the value from pom.xml assign to variable project.name in yml file
+maven:
+  project:
+    name: '@project.name@'
+project:
+  name: ${maven.project.name} Main
+  version: '@project.version@'
