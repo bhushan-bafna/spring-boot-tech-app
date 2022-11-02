@@ -34,7 +34,7 @@
 		<!-- project Dependency -->
 		<dependency>
 			<groupId>com.tech.app</groupId>
-			<artifactId>spring-boot-logging</artifactId>
+			<artifactId>spring-boot-tech-logging</artifactId>
 		</dependency>
 	</dependencies>
 

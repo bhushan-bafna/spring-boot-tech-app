@@ -9,7 +9,7 @@
 		<artifactId>spring-boot-tech-app</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
-	<artifactId>sspring-boot-tech-logging</artifactId>
+	<artifactId>spring-boot-tech-logging</artifactId>
 	<name>spring-boot-tech-logging</name>
 	<dependencies>
 		<dependency>
