@@ -1,13 +1,14 @@
 package com.tech.app.controller;
 
 import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.tech.app.so.AppDetails;
+
+import lombok.extern.slf4j.Slf4j;
 
 /**
  * Tech App Rest Controller Class providing the information about the App
@@ -17,9 +18,8 @@ import com.tech.app.so.AppDetails;
  */
 @RestController
 @RequestMapping("/app")
+@Slf4j
 public class TechAppController {
-
-	Logger logger = LoggerFactory.getLogger(TechAppController.class);
 
 	@Value("${project.name}")
 	private String appName;
@@ -31,12 +31,12 @@ public class TechAppController {
 	@GetMapping("/details")
 	public AppDetails getAppName(@Value("${project.name}") String appName, @Value("${project.version}") String appVersion) {
 		AppDetails appDetails = new AppDetails(appName, appVersion);
-		logger.info("AppDetails : {}", appDetails.toString());
-		logger.trace("AppDetails : {}", appDetails.toString());
-		logger.debug("AppDetails : {}", appDetails.toString());
-		logger.warn("AppDetails : {}", appDetails.toString());
-		logger.error("AppDetails : {}", appDetails.toString());
-		logger.info("root logger : {}", Logger.ROOT_LOGGER_NAME);
+		log.info("AppDetails : {}", appDetails.toString());
+		log.trace("AppDetails : {}", appDetails.toString());
+		log.debug("AppDetails : {}", appDetails.toString());
+		log.warn("AppDetails : {}", appDetails.toString());
+		log.error("AppDetails : {}", appDetails.toString());
+		log.info("root logger : {}", Logger.ROOT_LOGGER_NAME);
 		return appDetails;
 	}
 

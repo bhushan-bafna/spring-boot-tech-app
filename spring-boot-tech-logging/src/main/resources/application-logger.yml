@@ -1,12 +1,22 @@
 #Looging Configuration
 
 logging:
-  #Set logging pattern
+  #Set logging pattern for console and in file
   pattern:
-    console: '%d{yyyy-MM-dd HH:mm:ss.SSS} %-5level - %-36logger{36} - %msg%n'
+    console: '%d{yyyy-MM-dd HH:mm:ss} %-5level - %-36logger{36} - %msg%n'
     file: '%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n'
+  #log file path and name configuration
+  file:
+    name: ./log/tech-app.log
+  #log file rolling configuration
+  logback:
+    rollingpolicy:
+      max-history: 1
+      max-file-size: 5KB
+      file-name-pattern: ./log/tech-app-%d{yyyy-MM-dd}.%i.log
+      
   #Set logging level  
   level:
     root: ERROR
-    org.springframework.web: INFO
+    org.springframework.web: DEBUG
     com.tech: INFO

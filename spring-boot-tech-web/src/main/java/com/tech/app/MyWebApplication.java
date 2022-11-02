@@ -2,13 +2,13 @@ package com.tech.app;
 
 import java.util.Arrays;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
+
+import lombok.extern.slf4j.Slf4j;
 
 /**
  * My Web Application Main class to initialize the application 
@@ -17,17 +17,16 @@ import org.springframework.context.annotation.Bean;
  *
  */
 @SpringBootApplication
+@Slf4j
 public class MyWebApplication {
 	
-	static Logger logger = LoggerFactory.getLogger(MyWebApplication.class);
-
     /**
      * This method is main method to Bootstrap Spring Application
      * 
      * @param args
      */
     public static void main(String[] args) {
-    	logger.info("init MyWebApplication");
+    	log.info("init MyWebApplication");
         SpringApplication.run(MyWebApplication.class, args);
 
     }
@@ -40,15 +39,14 @@ public class MyWebApplication {
      *            ApplicationContext object
      * @return
      */
-    @SuppressWarnings("unused")
-	@Bean
+    @Bean
     public CommandLineRunner commandLineRunner(ApplicationContext ctx) {
         return args -> {
-            logger.info("Let's inspect the beans provided by Spring Boot :");
+            log.info("Let's inspect the beans provided by Spring Boot :");
             String[] beanNames = ctx.getBeanDefinitionNames();
             Arrays.sort(beanNames);
             for (String beanName : beanNames) {
-                logger.debug(beanName);
+            	log.debug(beanName);
             }
 
         };
