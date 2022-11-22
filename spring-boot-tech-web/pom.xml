@@ -36,6 +36,16 @@
 			<groupId>com.tech.app</groupId>
 			<artifactId>spring-boot-tech-logging</artifactId>
 		</dependency>
+		<dependency>
+			<groupId>com.tech.app</groupId>
+			<artifactId>java-jdbc</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>com.oracle.database.jdbc</groupId>
+			<artifactId>ojdbc8</artifactId>
+		</dependency>
+
 	</dependencies>
 
 

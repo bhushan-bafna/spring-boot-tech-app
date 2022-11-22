@@ -14,6 +14,8 @@ logging:
       max-history: 1
       max-file-size: 5KB
       file-name-pattern: ./log/tech-app-%d{yyyy-MM-dd}.%i.log
+      #The maximum amount of size log archives can take before being deleted.
+      #total-size-cap: 10KB
       
   #Set logging level  
   level:

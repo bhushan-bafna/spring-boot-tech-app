@@ -35,8 +35,6 @@
 				<version>${spring-boot.version}</version>
 				<scope>import</scope>
 			</dependency>
-
-			<!-- Lombook Dependency -->
 			<dependency>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-devtools</artifactId>
@@ -46,24 +44,39 @@
 					off in production, -->
 				<optional>true</optional>
 			</dependency>
+
+			<!-- ojdbc Driver -->
+			<dependency>
+				<groupId>com.oracle.database.jdbc</groupId>
+				<artifactId>ojdbc8</artifactId>
+				<version>19.11.0.0</version>
+			</dependency>
+			
+			<!-- Lombook Dependency -->
 			<dependency>
 				<groupId>org.projectlombok</groupId>
 				<artifactId>lombok</artifactId>
 				<version>1.18.24</version>
 				<scope>provided</scope>
 			</dependency>
+
 			<!-- project Dependency -->
 			<dependency>
 				<groupId>com.tech.app</groupId>
 				<artifactId>spring-boot-tech-logging</artifactId>
 				<version>${project.version}</version>
 			</dependency>
-
+			<dependency>
+				<groupId>com.tech.app</groupId>
+				<artifactId>java-jdbc</artifactId>
+				<version>${project.version}</version>
+			</dependency>
 		</dependencies>
 	</dependencyManagement>
 	<modules>
 		<module>spring-boot-tech-web</module>
 		<module>spring-boot-tech-logging</module>
+		<module>java-jdbc</module>
 	</modules>
-	
+
 </project>

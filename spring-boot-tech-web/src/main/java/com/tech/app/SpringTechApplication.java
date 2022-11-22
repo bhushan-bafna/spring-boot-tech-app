@@ -18,7 +18,7 @@ import lombok.extern.slf4j.Slf4j;
  */
 @SpringBootApplication
 @Slf4j
-public class MyWebApplication {
+public class SpringTechApplication {
 	
     /**
      * This method is main method to Bootstrap Spring Application
@@ -27,7 +27,7 @@ public class MyWebApplication {
      */
     public static void main(String[] args) {
     	log.info("init MyWebApplication");
-        SpringApplication.run(MyWebApplication.class, args);
+        SpringApplication.run(SpringTechApplication.class, args);
 
     }
 
