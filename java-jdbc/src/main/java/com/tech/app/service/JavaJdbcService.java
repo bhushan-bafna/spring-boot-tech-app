@@ -16,9 +16,9 @@ public class JavaJdbcService {
 	private JavajdbcDaoImpl javajdbcDaoImpl;
 	
 
-	public void getDataUsingJavaJDBC() {
+	public String getDataUsingJavaJDBC() {
 		
-		javajdbcDaoImpl.getData();
+		return javajdbcDaoImpl.getData();
 		
 	}
 

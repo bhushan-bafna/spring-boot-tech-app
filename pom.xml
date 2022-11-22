@@ -51,7 +51,7 @@
 				<artifactId>ojdbc8</artifactId>
 				<version>19.11.0.0</version>
 			</dependency>
-			
+
 			<!-- Lombook Dependency -->
 			<dependency>
 				<groupId>org.projectlombok</groupId>
@@ -73,6 +73,13 @@
 			</dependency>
 		</dependencies>
 	</dependencyManagement>
+	<dependencies>
+		<!-- Lombook Dependency -->
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+		</dependency>
+	</dependencies>
 	<modules>
 		<module>spring-boot-tech-web</module>
 		<module>spring-boot-tech-logging</module>

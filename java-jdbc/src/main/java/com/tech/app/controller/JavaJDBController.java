@@ -6,7 +6,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.tech.app.service.JavaJdbcService;
-import com.tech.app.so.AppDetails;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -29,12 +28,9 @@ public class JavaJDBController {
 	 * 
 	 */
 	@GetMapping("/data/java/jdbc")
-	public AppDetails getDataUsingJavaJDBC() {
+	public String getDataUsingJavaJDBC() {
 		log.info("getDataUsingJavaJDBC()");
-		
-		javaJDBCService.getDataUsingJavaJDBC();
-
-		return null;
+		return javaJDBCService.getDataUsingJavaJDBC();
 	}
 
 }
