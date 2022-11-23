@@ -10,9 +10,10 @@
 	<name>Spring Boot Tech App</name>
 	<description>Spring Boot Tech App</description>
 	<properties>
-		<spring-boot.version>2.7.2</spring-boot.version>
 		<maven.compiler.source>1.8</maven.compiler.source>
 		<maven.compiler.target>1.8</maven.compiler.target>
+		<spring-boot.version>2.7.5</spring-boot.version>
+		<lombok.version>1.18.24</lombok.version>
 	</properties>
 	<dependencyManagement>
 		<dependencies>
@@ -46,17 +47,17 @@
 			</dependency>
 
 			<!-- ojdbc Driver -->
-			<dependency>
+			<!-- <dependency>
 				<groupId>com.oracle.database.jdbc</groupId>
 				<artifactId>ojdbc8</artifactId>
 				<version>19.11.0.0</version>
-			</dependency>
+			</dependency> -->
 
 			<!-- Lombook Dependency -->
 			<dependency>
 				<groupId>org.projectlombok</groupId>
 				<artifactId>lombok</artifactId>
-				<version>1.18.24</version>
+				<version>${lombok.version}</version>
 				<scope>provided</scope>
 			</dependency>
 
