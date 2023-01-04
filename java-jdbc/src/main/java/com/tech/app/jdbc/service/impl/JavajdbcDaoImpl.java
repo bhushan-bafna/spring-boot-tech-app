@@ -19,12 +19,11 @@ public class JavajdbcDaoImpl {
 	final String DB_URL = "jdbc:oracle:thin:@sd1600021.gch.generali.ch:1521:GCHB2BD";
 	final String USER = "XBPSEL1";
 	final String PASS = "XBPSEL1";
-	String query = "SELECT * FROM nutzer where NUTZ_NUTZER_ID='pt249387' or NUTZ_NUTZER_ID='id'";
 
 	public PersonDAO getData(String id) {
 		StringBuilder sb = new StringBuilder();
 		PersonDAO person = new PersonDAO();
-		String query = "SELECT * FROM nutzer where NUTZ_NUTZER_ID='pt249387' or NUTZ_NUTZER_ID='"+id+"'";
+		String query = "SELECT * FROM nutzer where NUTZ_NUTZER_ID='"+id+"'";
 		log.info(query);
 		try (Connection conn = DriverManager.getConnection(DB_URL, USER, PASS);
 				Statement stmt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);

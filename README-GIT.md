@@ -16,3 +16,10 @@ https://stackoverflow.com/questions/15745045/how-do-i-resolve-git-saying-commit-
 
 How Gut works:
 https://stackoverflow.com/questions/2745076/what-are-the-differences-between-git-commit-and-git-push/72992628#72992628
+
+------------------------------------------------------------------------------------------------------------------------------------
+code commit steps
+ - [git status] (add ignore files in required)
+ - [git add <file-name>] -> to add single file  OR  - [git add .] -> to add all the files
+ - [git commit -m 'commit msg']
+ - [git push]

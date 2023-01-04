@@ -25,11 +25,11 @@
 			<optional>true</optional>
 		</dependency>
 		
-		<!-- Spring Open API Documentation -->
-		<dependency>
+		<!-- Spring Open API Documentation // commented here since managed from parent pom-->
+		<!-- <dependency>
 			<groupId>org.springdoc</groupId>
 			<artifactId>springdoc-openapi-ui</artifactId>
-		</dependency>
+		</dependency> -->
 
 		<!-- Lombook Dependency -->
 		<dependency>

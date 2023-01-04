@@ -45,7 +45,7 @@
 				<optional>true</optional>
 			</dependency>
 
-			<!-- Spring Open API UI Documentation -->
+			<!-- Spring Open API 3.0 / Swagger 3.0 Documentation -->
 			<dependency>
 				<groupId>org.springdoc</groupId>
 				<artifactId>springdoc-openapi-ui</artifactId>
@@ -88,12 +88,16 @@
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
 		</dependency>
+		<!-- Spring Open API 3.0 / Swagger 3.0 Documentation -->
+		<dependency>
+			<groupId>org.springdoc</groupId>
+			<artifactId>springdoc-openapi-ui</artifactId>
+		</dependency>
 	</dependencies>
 	<modules>
 		<module>spring-boot-tech-web</module>
 		<module>spring-boot-tech-logging</module>
 		<module>java-jdbc</module>
-    	<!-- <module>spring-boot-swagger-3</module> -->
   	</modules>
 
 </project>

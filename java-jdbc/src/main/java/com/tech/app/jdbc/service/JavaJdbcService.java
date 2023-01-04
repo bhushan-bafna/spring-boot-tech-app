@@ -27,6 +27,7 @@ public class JavaJdbcService {
 		PersonDTO personDto = new PersonDTO();
 		BeanUtils.copyProperties(personDao, personDto);
 		log.info("personDto - {}", personDto.toString());
+		if(personDto.getFirstName() == null) throw new Exception();
 		return personDto;
 	}
 
