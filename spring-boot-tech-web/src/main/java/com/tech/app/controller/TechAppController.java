@@ -24,12 +24,15 @@ public class TechAppController {
 	@Value("${project.name}")
 	private String appName;
 
+	@Value("${project.version}")
+	String appVersion;
+
 	/**
 	 * This method is to get the App Name
 	 * 
 	 */
 	@GetMapping("/details")
-	public AppDetails getAppName(@Value("${project.name}") String appName, @Value("${project.version}") String appVersion) {
+	public AppDetails getAppName() {
 		AppDetails appDetails = new AppDetails(appName, appVersion);
 		log.info("AppDetails : {}", appDetails.toString());
 		log.trace("AppDetails : {}", appDetails.toString());
