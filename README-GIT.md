@@ -19,7 +19,7 @@ https://stackoverflow.com/questions/2745076/what-are-the-differences-between-git
 
 ------------------------------------------------------------------------------------------------------------------------------------
 code commit steps
- - [git status] (add ignore files in required)
+ - [git status] (add ignore files in case if required)
  - [git add <file-name>] -> to add single file  OR  - [git add .] -> to add all the files
  - [git commit -m 'commit msg']
  - [git push]
