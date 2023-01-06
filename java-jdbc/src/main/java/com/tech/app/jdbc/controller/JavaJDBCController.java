@@ -9,7 +9,10 @@ import org.springframework.web.bind.annotation.RestController;
 import com.tech.app.jdbc.dto.PersonDTO;
 import com.tech.app.jdbc.service.JavaJdbcService;
 
+import io.swagger.v3.oas.annotations.OpenAPIDefinition;
 import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.info.Contact;
+import io.swagger.v3.oas.annotations.info.Info;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;

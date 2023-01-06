@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 import com.tech.app.exception.NotFoundException;
 import com.tech.app.exception.model.ErrorResponse;
-import com.tech.app.jdbc.dto.PersonDTO;
 
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
@@ -24,29 +23,27 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class GlobalControllerExceptionHandler {
 
-    @ExceptionHandler(NotFoundException.class)
-    @ResponseStatus(HttpStatus.NO_CONTENT)
-    @ApiResponses(value = { 
-			@ApiResponse(responseCode = "204", description = "Data not found", content = {
+	@ExceptionHandler(NotFoundException.class)
+	@ResponseStatus(HttpStatus.NOT_FOUND)
+	@ApiResponses(value = { @ApiResponse(responseCode = "204", description = "Data not found", content = {
 			@Content(mediaType = "application/json", schema = @Schema(implementation = ErrorResponse.class)) }) })
-    public ResponseEntity<ErrorResponse> handleBookNotFound(RuntimeException ex) {
-    	log.info("excetion in handler");
-    	ErrorResponse error = new ErrorResponse();
-    	error.setCode("NOTFOUND");
-    	error.setMessage("No data Found");
-        return new ResponseEntity<ErrorResponse>(error, HttpStatus.NO_CONTENT);
-    }
-    
-    @ExceptionHandler(Exception.class)
-    @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
-    @ApiResponses(value = { 
-			@ApiResponse(responseCode = "500", description = "Generic exception occured", content = {
+	public ResponseEntity<ErrorResponse> handleBookNotFound(RuntimeException ex) {
+		log.info("excetion in handler");
+		ErrorResponse error = new ErrorResponse();
+		error.setCode("NOTFOUND");
+		error.setMessage("No data Found");
+		return new ResponseEntity<ErrorResponse>(error, HttpStatus.NOT_FOUND);
+	}
+
+	@ExceptionHandler(Exception.class)
+	@ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
+	@ApiResponses(value = { @ApiResponse(responseCode = "500", description = "Generic exception occured", content = {
 			@Content(mediaType = "application/json", schema = @Schema(implementation = ErrorResponse.class)) }) })
-    public ResponseEntity<ErrorResponse> handleBookNotFound(Exception ex) {
-    	log.info("Generic Excetion in handler");
-    	ErrorResponse error = new ErrorResponse();
-    	error.setCode("GENERIC");
-    	error.setMessage("Generic Exception");
-        return new ResponseEntity<ErrorResponse>(error, HttpStatus.INTERNAL_SERVER_ERROR);
-    }
+	public ResponseEntity<ErrorResponse> handleBookNotFound(Exception ex) {
+		log.info("Generic Excetion in handler");
+		ErrorResponse error = new ErrorResponse();
+		error.setCode("GENERIC");
+		error.setMessage("Generic Exception");
+		return new ResponseEntity<ErrorResponse>(error, HttpStatus.INTERNAL_SERVER_ERROR);
+	}
 }

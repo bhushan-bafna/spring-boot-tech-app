@@ -8,6 +8,7 @@
 	<name>Spring Boot Tech App</name>
 	<description>Spring Boot Tech App</description>
 	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<maven.compiler.source>1.8</maven.compiler.source>
 		<maven.compiler.target>1.8</maven.compiler.target>
 		<spring-boot.version>2.7.7</spring-boot.version>
@@ -80,6 +81,11 @@
 				<artifactId>java-jdbc</artifactId>
 				<version>${project.version}</version>
 			</dependency>
+			<dependency>
+				<groupId>com.tech.app</groupId>
+				<artifactId>spring-boot-generic-ex-handler</artifactId>
+				<version>${project.version}</version>
+			</dependency>
 		</dependencies>
 	</dependencyManagement>
 	<dependencies>
@@ -98,6 +104,7 @@
 		<module>spring-boot-tech-web</module>
 		<module>spring-boot-tech-logging</module>
 		<module>java-jdbc</module>
-  	</modules>
+		<module>spring-boot-generic-ex-handler</module>
+  </modules>
 
 </project>

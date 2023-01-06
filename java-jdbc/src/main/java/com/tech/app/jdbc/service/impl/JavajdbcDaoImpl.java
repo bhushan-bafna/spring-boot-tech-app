@@ -8,6 +8,7 @@ import java.sql.Statement;
 
 import org.springframework.stereotype.Component;
 
+import com.tech.app.exception.NotFoundException;
 import com.tech.app.jdbc.dao.PersonDAO;
 
 import lombok.extern.slf4j.Slf4j;
@@ -22,25 +23,25 @@ public class JavajdbcDaoImpl {
 
 	public PersonDAO getData(String id) {
 		StringBuilder sb = new StringBuilder();
-		PersonDAO person = new PersonDAO();
-		String query = "SELECT * FROM nutzer where NUTZ_NUTZER_ID='"+id+"'";
+		PersonDAO personDao = new PersonDAO();
+		String query = "SELECT * FROM nutzer where NUTZ_NUTZER_ID='" + id + "'";
 		log.info(query);
 		try (Connection conn = DriverManager.getConnection(DB_URL, USER, PASS);
 				Statement stmt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
 				ResultSet rs = stmt.executeQuery(query);) {
 //			rs.next();
 			if (rs.first()) {
-				person.setInstanz(rs.getLong("NUTZ_INSTANZ"));
-				person.setFirstName(rs.getString("NUTZ_VORNAME"));
-				person.setLastName(rs.getString("NUTZ_NAME"));
-				person.setId(rs.getString("NUTZ_NUTZER_ID"));
-				log.info("Person - {}", person.toString());
+				personDao.setInstanz(rs.getLong("NUTZ_INSTANZ"));
+				personDao.setFirstName(rs.getString("NUTZ_VORNAME"));
+				personDao.setLastName(rs.getString("NUTZ_NAME"));
+				personDao.setId(rs.getString("NUTZ_NUTZER_ID"));
+				log.info("Person - {}", personDao.toString());
 			}
 		} catch (SQLException e) {
 			log.error(e.getMessage());
 			e.printStackTrace();
 		}
-		return person;
+		return personDao;
 	}
 
 }

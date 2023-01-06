@@ -11,22 +11,17 @@
 	</parent>
 	<artifactId>java-jdbc</artifactId>
 	<name>java-jdbc</name>
-	<properties>
-		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-	</properties>
 	<dependencies>
-		<dependency>
-			<groupId>junit</groupId>
-			<artifactId>junit</artifactId>
-			<scope>test</scope>
-		</dependency>
-		<!-- <dependency>
-			<groupId>com.oracle.database.jdbc</groupId>
-			<artifactId>ojdbc8</artifactId>
-		</dependency> -->
+		<!-- Spring Dependencies -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-web</artifactId>
+			<artifactId>spring-boot-starter</artifactId>
+		</dependency>
+
+		<!-- project Dependency -->
+		<dependency>
+			<groupId>com.tech.app</groupId>
+			<artifactId>spring-boot-generic-ex-handler</artifactId>
 		</dependency>
 	</dependencies>
 </project>
