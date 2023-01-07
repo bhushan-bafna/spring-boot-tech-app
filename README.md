@@ -7,5 +7,6 @@ Modules:
  - spring-boot-tech-web
  - spring-boot-tech-logging
  - java-jdbc
+ - spring-boot-generic-ex-handle
 
 -----------------------------------------------------------------------
