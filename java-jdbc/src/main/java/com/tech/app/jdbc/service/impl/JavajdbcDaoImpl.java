@@ -17,24 +17,24 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class JavajdbcDaoImpl {
 
-	final String DB_URL = "jdbc:oracle:thin:@sd1600021.gch.generali.ch:1521:GCHB2BD";
-	final String USER = "XBPSEL1";
-	final String PASS = "XBPSEL1";
+	final String DB_URL = "jdbc:oracle:thin:@{IP-ADDRESS}:1521:{SID}";
+	final String USER = "username";
+	final String PASS = "passwrod";
 
 	public PersonDAO getData(String id) {
 		StringBuilder sb = new StringBuilder();
 		PersonDAO personDao = new PersonDAO();
-		String query = "SELECT * FROM nutzer where NUTZ_NUTZER_ID='" + id + "'";
+		String query = "SELECT * FROM PERSON where PERSON_ID='" + id + "'";
 		log.info(query);
 		try (Connection conn = DriverManager.getConnection(DB_URL, USER, PASS);
 				Statement stmt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
 				ResultSet rs = stmt.executeQuery(query);) {
 //			rs.next();
 			if (rs.first()) {
-				personDao.setInstanz(rs.getLong("NUTZ_INSTANZ"));
-				personDao.setFirstName(rs.getString("NUTZ_VORNAME"));
-				personDao.setLastName(rs.getString("NUTZ_NAME"));
-				personDao.setId(rs.getString("NUTZ_NUTZER_ID"));
+				personDao.setInstanz(rs.getLong("INSTANCE"));
+				personDao.setFirstName(rs.getString("FIRST_NAME"));
+				personDao.setLastName(rs.getString("LAST_NAME"));
+				personDao.setId(rs.getString("PERSON_ID"));
 				log.info("Person - {}", personDao.toString());
 			}
 		} catch (SQLException e) {
