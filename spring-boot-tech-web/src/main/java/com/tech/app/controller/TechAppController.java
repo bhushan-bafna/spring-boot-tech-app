@@ -27,23 +27,24 @@ import lombok.extern.slf4j.Slf4j;
 @RestController
 @RequestMapping("/app")
 @Slf4j
-@OpenAPIDefinition(info = @Info(title = "Tech App API", description = "Tech App API Description", contact = @Contact(name = "Bhushan Bafna", email = "bhushan.bafna")))
+@OpenAPIDefinition(info = @Info(title = "Tech App API", description = "Tech App API Description",
+	contact = @Contact(name = "Bhushan Bafna", email = "bhushan.bafna")))
 public class TechAppController {
-
+	
 	@Value("${project.name}")
 	private String appName;
-
+	
 	@Value("${project.version}")
 	String appVersion;
-
+	
 	/**
 	 * This method is to get the App Name
 	 * 
 	 */
 	@GetMapping("/details")
 	@Operation(summary = "Get the current app name and version")
-	@ApiResponses(value = { @ApiResponse(responseCode = "200", description = "Application Details", content = {
-			@Content(mediaType = "application/json", schema = @Schema(implementation = AppDetails.class)) }) })
+	@ApiResponses(value = { @ApiResponse(responseCode = "200", description = "Application Details",
+		content = { @Content(mediaType = "application/json", schema = @Schema(implementation = AppDetails.class)) }) })
 	public AppDetails getAppName() {
 		AppDetails appDetails = new AppDetails(appName, appVersion);
 		log.info("AppDetails : {}", appDetails.toString());
@@ -54,5 +55,5 @@ public class TechAppController {
 		log.info("root logger : {}", Logger.ROOT_LOGGER_NAME);
 		return appDetails;
 	}
-
+	
 }
