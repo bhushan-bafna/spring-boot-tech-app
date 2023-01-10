@@ -6,6 +6,7 @@ import lombok.ToString;
 
 /**
  * POJO for holding Application Details
+ * 
  * @author p249387
  *
  */
@@ -16,5 +17,5 @@ public class AppDetails {
 	
 	private String appName;
 	private String appVersion;
-
+	
 }

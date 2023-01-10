@@ -8,7 +8,6 @@ import java.sql.Statement;
 
 import org.springframework.stereotype.Component;
 
-import com.tech.app.exception.NotFoundException;
 import com.tech.app.jdbc.dao.PersonDAO;
 
 import lombok.extern.slf4j.Slf4j;
@@ -16,19 +15,18 @@ import lombok.extern.slf4j.Slf4j;
 @Component
 @Slf4j
 public class JavajdbcDaoImpl {
-
+	
 	final String DB_URL = "jdbc:oracle:thin:@{IP-ADDRESS}:1521:{SID}";
 	final String USER = "username";
 	final String PASS = "passwrod";
-
+	
 	public PersonDAO getData(String id) {
-		StringBuilder sb = new StringBuilder();
 		PersonDAO personDao = new PersonDAO();
 		String query = "SELECT * FROM PERSON where PERSON_ID='" + id + "'";
 		log.info(query);
 		try (Connection conn = DriverManager.getConnection(DB_URL, USER, PASS);
-				Statement stmt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
-				ResultSet rs = stmt.executeQuery(query);) {
+			Statement stmt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+			ResultSet rs = stmt.executeQuery(query);) {
 //			rs.next();
 			if (rs.first()) {
 				personDao.setInstanz(rs.getLong("INSTANCE"));
@@ -43,5 +41,5 @@ public class JavajdbcDaoImpl {
 		}
 		return personDao;
 	}
-
+	
 }

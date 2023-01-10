@@ -9,10 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.tech.app.jdbc.dto.PersonDTO;
 import com.tech.app.jdbc.service.JavaJdbcService;
 
-import io.swagger.v3.oas.annotations.OpenAPIDefinition;
 import io.swagger.v3.oas.annotations.Operation;
-import io.swagger.v3.oas.annotations.info.Contact;
-import io.swagger.v3.oas.annotations.info.Info;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
@@ -20,7 +17,8 @@ import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import lombok.extern.slf4j.Slf4j;
 
 /**
- * JavaJDBController Class is used to get data from Database using JDBC connection
+ * JavaJDBController Class is used to get data from Database using JDBC
+ * connection
  * 
  * @author Bhushan Bafna
  *
@@ -35,17 +33,17 @@ public class JavaJDBCController {
 	
 	/**
 	 * This method is to get the App Name
-	 * @throws Exception 
+	 * 
+	 * @throws Exception
 	 * 
 	 */
 	@GetMapping("/data/java/jdbc/{id}")
 	@Operation(summary = "Get the person details")
-	@ApiResponses(value = { 
-			@ApiResponse(responseCode = "200", description = "Fetch Person Details for given id", content = {
-			@Content(mediaType = "application/json", schema = @Schema(implementation = PersonDTO.class)) }) })
+	@ApiResponses(value = { @ApiResponse(responseCode = "200", description = "Fetch Person Details for given id",
+		content = { @Content(mediaType = "application/json", schema = @Schema(implementation = PersonDTO.class)) }) })
 	public PersonDTO getDataUsingJavaJDBC(@PathVariable("id") String id) throws Exception {
 		log.info("getDataUsingJavaJDBC(), id - {}", id);
 		return javaJDBCService.getDataUsingJavaJDBC(id);
 	}
-
+	
 }

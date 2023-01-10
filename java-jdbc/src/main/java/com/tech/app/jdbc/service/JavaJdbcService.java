@@ -3,7 +3,6 @@ package com.tech.app.jdbc.service;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.util.StringUtils;
 
 import com.tech.app.exception.NotFoundException;
 import com.tech.app.jdbc.dao.PersonDAO;
@@ -19,10 +18,10 @@ import lombok.extern.slf4j.Slf4j;
 @Service
 @Slf4j
 public class JavaJdbcService {
-
+	
 	@Autowired
 	private JavajdbcDaoImpl javajdbcDaoImpl;
-
+	
 	public PersonDTO getDataUsingJavaJDBC(String id) throws Exception {
 		PersonDAO personDao = javajdbcDaoImpl.getData(id);
 		PersonDTO personDto = new PersonDTO();
@@ -32,5 +31,5 @@ public class JavaJdbcService {
 			throw new NotFoundException();
 		return personDto;
 	}
-
+	
 }
