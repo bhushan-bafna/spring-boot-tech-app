@@ -36,7 +36,7 @@ public class JavaJdbcService {
 		BeanUtils.copyProperties(personDao, personDto);
 		log.info("personDto - {}", personDto.toString());
 		if (personDto.getFirstName() == null)
-			throw new NotFoundException();
+			throw new NotFoundException("NOTFOUND", "Person Details not found");
 		return personDto;
 	}
 	

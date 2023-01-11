@@ -30,8 +30,9 @@ public class JavajdbcRepositoryImpl {
 	 * 
 	 * @param id
 	 * @return
+	 * @throws SQLException 
 	 */
-	public PersonDAO getData(String id) {
+	public PersonDAO getData(String id) throws SQLException {
 		PersonDAO personDao = new PersonDAO();
 		String query = "SELECT * FROM PERSON where PERSON_ID='" + id + "'";
 		log.info(query);
@@ -47,8 +48,8 @@ public class JavajdbcRepositoryImpl {
 				log.info("Person - {}", personDao.toString());
 			}
 		} catch (SQLException e) {
-			log.error(e.getMessage());
-			e.printStackTrace();
+			log.error("Exception Strack Trace ", e);
+			throw e;
 		}
 		return personDao;
 	}

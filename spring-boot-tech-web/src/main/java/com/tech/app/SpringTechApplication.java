@@ -41,8 +41,9 @@ public class SpringTechApplication {
 	@Bean
 	public CommandLineRunner commandLineRunner(ApplicationContext ctx) {
 		return args -> {
-			log.info("Let's inspect the beans provided by Spring Boot :");
+			
 			String[] beanNames = ctx.getBeanDefinitionNames();
+			log.info("Let's inspect the beans provided by Spring Boot, total beans found : {}", beanNames.length);
 			Arrays.sort(beanNames);
 			for (String beanName : beanNames) {
 				log.debug(beanName);
