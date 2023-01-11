@@ -26,7 +26,7 @@ import lombok.extern.slf4j.Slf4j;
 public class GlobalControllerExceptionHandler {
 	
 	/**
-	 * Exception handler method for catching NotFoundException
+	 * Exception handler method for catching NotFoundException.
 	 * 
 	 * @param ex
 	 * @return
@@ -45,7 +45,7 @@ public class GlobalControllerExceptionHandler {
 	}
 	
 	/**
-	 * Generic Exception handler method for catching any Exception
+	 * Generic Exception handler method for catching any Exception.
 	 * 
 	 * @param ex
 	 * @return
