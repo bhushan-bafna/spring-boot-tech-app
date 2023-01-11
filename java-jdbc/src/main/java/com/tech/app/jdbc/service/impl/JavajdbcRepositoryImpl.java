@@ -12,6 +12,11 @@ import com.tech.app.jdbc.dao.PersonDAO;
 
 import lombok.extern.slf4j.Slf4j;
 
+/**
+ * Person repository to perform DB related operation
+ * 
+ * @author Bhushan Bafna
+ */
 @Component
 @Slf4j
 public class JavajdbcRepositoryImpl {
@@ -20,6 +25,12 @@ public class JavajdbcRepositoryImpl {
 	final String USER = "username";
 	final String PASS = "passwrod";
 	
+	/**
+	 * Method to fetch person data from DB by id
+	 * 
+	 * @param id
+	 * @return
+	 */
 	public PersonDAO getData(String id) {
 		PersonDAO personDao = new PersonDAO();
 		String query = "SELECT * FROM PERSON where PERSON_ID='" + id + "'";

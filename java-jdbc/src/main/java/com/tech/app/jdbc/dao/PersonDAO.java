@@ -3,8 +3,9 @@ package com.tech.app.jdbc.dao;
 import lombok.Data;
 
 /**
+ * Person data access object
+ * 
  * @author Bhushan Bafna
- *
  */
 @Data
 public class PersonDAO {

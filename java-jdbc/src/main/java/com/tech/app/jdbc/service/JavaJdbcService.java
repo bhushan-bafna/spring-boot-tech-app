@@ -12,8 +12,9 @@ import com.tech.app.jdbc.service.impl.JavajdbcRepositoryImpl;
 import lombok.extern.slf4j.Slf4j;
 
 /**
+ * Service object to person related task
+ * 
  * @author Bhushan Bafna
- *
  */
 @Service
 @Slf4j
@@ -22,6 +23,13 @@ public class JavaJdbcService {
 	@Autowired
 	private JavajdbcRepositoryImpl javajdbcDaoImpl;
 	
+	/**
+	 * Method to get connect to repository and fetch person details
+	 * 
+	 * @param id
+	 * @return
+	 * @throws Exception
+	 */
 	public PersonDTO getDataUsingJavaJDBC(String id) throws Exception {
 		PersonDAO personDao = javajdbcDaoImpl.getData(id);
 		PersonDTO personDto = new PersonDTO();

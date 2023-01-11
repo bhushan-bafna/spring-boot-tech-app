@@ -7,8 +7,7 @@ import lombok.ToString;
 /**
  * POJO for holding Application Details
  * 
- * @author p249387
- *
+ * @author Bhushan Bafna
  */
 @Data
 @ToString

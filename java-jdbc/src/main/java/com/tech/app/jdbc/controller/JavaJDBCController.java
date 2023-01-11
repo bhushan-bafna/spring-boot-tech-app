@@ -21,7 +21,6 @@ import lombok.extern.slf4j.Slf4j;
  * connection
  * 
  * @author Bhushan Bafna
- *
  */
 @RestController
 @RequestMapping("/app")
@@ -32,7 +31,7 @@ public class JavaJDBCController {
 	private JavaJdbcService javaJDBCService;
 	
 	/**
-	 * This method is to get the App Name
+	 * This method is to get the person details based on id
 	 * 
 	 * @throws Exception
 	 * 

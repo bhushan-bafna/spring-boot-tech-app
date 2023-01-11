@@ -13,7 +13,7 @@ import lombok.extern.slf4j.Slf4j;
 /**
  * My Web Application Main class to initialize the application
  * 
- * @author p249387
+ * @author Bhushan Bafna
  *
  */
 @SpringBootApplication
