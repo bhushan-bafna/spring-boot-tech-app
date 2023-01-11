@@ -2,8 +2,10 @@ package com.tech.app.controller;
 
 import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.tech.app.so.AppDetails;
@@ -16,6 +18,7 @@ import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import io.swagger.v3.oas.annotations.servers.Server;
 import lombok.extern.slf4j.Slf4j;
 
 /**
@@ -27,8 +30,14 @@ import lombok.extern.slf4j.Slf4j;
 @RestController
 @RequestMapping("/app")
 @Slf4j
-@OpenAPIDefinition(info = @Info(title = "Tech App API", description = "Tech App API Description",
-	contact = @Contact(name = "Bhushan Bafna", email = "bhushan.bafna")))
+@OpenAPIDefinition(
+	info = @Info(title = "Tech App API", description = "Tech App API Description",
+		contact = @Contact(name = "Bhushan Bafna", email = "bhushan.bafna")),
+	servers = { @Server(url = "http://localhost:8090/tech-app", description = "LOCAL"),
+		@Server(url = "http://devl.techapp.com/tech-app", description = "DEVL"),
+		@Server(url = "http://test.techapp.com/tech-app", description = "TEST") })
+// Using @CrossOrigin(origins = "*") opens your application to all domains, this means any domain can access your endpoints
+@CrossOrigin(origins = "*")
 public class TechAppController {
 	
 	@Value("${project.name}")
