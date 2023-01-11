@@ -16,7 +16,7 @@ import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import lombok.extern.slf4j.Slf4j;
 
 /**
- * This class is the Global exception handler.
+ * This class is the Global Exception Handler.
  * 
  * @author Bhushan Bafna
  *
@@ -25,18 +25,31 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class GlobalControllerExceptionHandler {
 	
+	/**
+	 * Exception handler method for catching NotFoundException
+	 * 
+	 * @param ex
+	 * @return
+	 */
 	@ExceptionHandler(NotFoundException.class)
 	@ResponseStatus(HttpStatus.NOT_FOUND)
 	@ApiResponses(value = { @ApiResponse(responseCode = "204", description = "Data not found", content = {
 		@Content(mediaType = "application/json", schema = @Schema(implementation = ErrorResponse.class)) }) })
 	public ResponseEntity<ErrorResponse> handleBookNotFound(RuntimeException ex) {
 		log.info("excetion in handler");
+		NotFoundException nFex = (NotFoundException) ex;
 		ErrorResponse error = new ErrorResponse();
-		error.setCode("NOTFOUND");
-		error.setMessage("No data Found");
+		error.setCode(nFex.getErrorCode());
+		error.setMessage(nFex.getErrorMsg());
 		return new ResponseEntity<ErrorResponse>(error, HttpStatus.NOT_FOUND);
 	}
 	
+	/**
+	 * Generic Exception handler method for catching any Exception
+	 * 
+	 * @param ex
+	 * @return
+	 */
 	@ExceptionHandler(Exception.class)
 	@ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
 	@ApiResponses(value = { @ApiResponse(responseCode = "500", description = "Generic exception occured", content = {

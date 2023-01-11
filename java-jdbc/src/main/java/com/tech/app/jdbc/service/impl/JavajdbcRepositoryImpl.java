@@ -14,7 +14,7 @@ import lombok.extern.slf4j.Slf4j;
 
 @Component
 @Slf4j
-public class JavajdbcDaoImpl {
+public class JavajdbcRepositoryImpl {
 	
 	final String DB_URL = "jdbc:oracle:thin:@{IP-ADDRESS}:1521:{SID}";
 	final String USER = "username";
