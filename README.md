@@ -2,7 +2,7 @@
 
 Spring Boot Tech App Demo
 
-This is simple maven application as a parent project with pom packaging
+This is simple maven application as a parent project with pom packaging<br/>
 Modules:
  - spring-boot-tech-web
  - spring-boot-tech-logging
