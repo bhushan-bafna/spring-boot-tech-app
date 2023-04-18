@@ -16,7 +16,8 @@ import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import lombok.extern.slf4j.Slf4j;
 
 /**
- * This class is the Global Exception Handler.
+ * This class is the Global Exception Handler. This class will handle exception
+ * will be handled in here which occur anywhere in application
  * 
  * @author Bhushan Bafna
  *
@@ -24,7 +25,7 @@ import lombok.extern.slf4j.Slf4j;
 @RestControllerAdvice
 @Slf4j
 public class GlobalControllerExceptionHandler {
-	
+
 	/**
 	 * Exception handler method for catching NotFoundException.
 	 * 
@@ -34,7 +35,7 @@ public class GlobalControllerExceptionHandler {
 	@ExceptionHandler(NotFoundException.class)
 	@ResponseStatus(HttpStatus.NOT_FOUND)
 	@ApiResponses(value = { @ApiResponse(responseCode = "204", description = "Data not found", content = {
-		@Content(mediaType = "application/json", schema = @Schema(implementation = ErrorResponse.class)) }) })
+			@Content(mediaType = "application/json", schema = @Schema(implementation = ErrorResponse.class)) }) })
 	public ResponseEntity<ErrorResponse> handleBookNotFound(RuntimeException ex) {
 		log.info("excetion in handler");
 		NotFoundException nFex = (NotFoundException) ex;
@@ -43,7 +44,7 @@ public class GlobalControllerExceptionHandler {
 		error.setMessage(nFex.getErrorMsg());
 		return new ResponseEntity<ErrorResponse>(error, HttpStatus.NOT_FOUND);
 	}
-	
+
 	/**
 	 * Generic Exception handler method for catching any Exception.
 	 * 
@@ -53,7 +54,7 @@ public class GlobalControllerExceptionHandler {
 	@ExceptionHandler(Exception.class)
 	@ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
 	@ApiResponses(value = { @ApiResponse(responseCode = "500", description = "Generic exception occured", content = {
-		@Content(mediaType = "application/json", schema = @Schema(implementation = ErrorResponse.class)) }) })
+			@Content(mediaType = "application/json", schema = @Schema(implementation = ErrorResponse.class)) }) })
 	public ResponseEntity<ErrorResponse> handleBookNotFound(Exception ex) {
 		log.info("Generic Excetion in handler");
 		ErrorResponse error = new ErrorResponse();
