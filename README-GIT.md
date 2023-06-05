@@ -24,7 +24,6 @@ Run the following command in the terminal to remove your credentials stored in t
 	git config --global --unset credential.helper
 ------------------------------------------------------------------------------------------------------------------------------------
 
-
 How do I resolve git saying "Commit your changes or stash them before you can merge"?
 https://stackoverflow.com/questions/15745045/how-do-i-resolve-git-saying-commit-your-changes-or-stash-them-before-you-can-me
 
