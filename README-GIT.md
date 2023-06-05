@@ -14,7 +14,7 @@ How do I resolve git saying "Commit your changes or stash them before you can me
 https://stackoverflow.com/questions/15745045/how-do-i-resolve-git-saying-commit-your-changes-or-stash-them-before-you-can-me
 
 
-How Gut works:
+How Git works:
 https://stackoverflow.com/questions/2745076/what-are-the-differences-between-git-commit-and-git-push/72992628#72992628
 
 ------------------------------------------------------------------------------------------------------------------------------------
