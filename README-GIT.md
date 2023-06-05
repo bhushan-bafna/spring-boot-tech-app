@@ -13,6 +13,10 @@ Since a PAT can be used in place of a password when performing Git operations ov
 	git config --global credential.helper manager-core
 	 #Git 2.39+
 	git config --global credential.helper manager
+	
+In our case, the above solution didn't work but store instead of manager worked well (git version 2.14.1.windows.1):
+	
+	git config --global credential.helper store
 ------------------------------------------------------------------------------------------------------------------------------------
 
 How to remove cached credentials from Git?
