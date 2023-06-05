@@ -2,7 +2,7 @@ My Spring Web Application
 	This Application is created using the spring-boot-starter-web as an dependency instead of using the spring-boot-starter
 
 ***Automatic Property Expansion Using Maven
-You can automatically expand properties from the Maven project by using resource filtering. If you use the spring-boot-starter-parent, you can then refer to your Maven ‘project properties’ with @..@ placeholders, as shown in the following example:
+You can automatically expand properties from the Maven project by using resource filtering. If you use the spring-boot-starter-parent, you can then refer to your Maven ï¿½project propertiesï¿½ with @..@ placeholders, as shown in the following example:
 
 YAML
 app:
@@ -11,7 +11,7 @@ app:
     version: "@java.version@"
 
 Only production configuration is filtered that way (in other words, no filtering is applied on src/test/resources).
-If you enable the addResources flag, the spring-boot:run goal can add src/main/resources directly to the classpath (for hot reloading purposes). Doing so circumvents the resource filtering and this feature. Instead, you can use the exec:java goal or customize the plugin’s configuration. See the plugin usage page for more details.
+If you enable the addResources flag, the spring-boot:run goal can add src/main/resources directly to the classpath (for hot reloading purposes). Doing so circumvents the resource filtering and this feature. Instead, you can use the exec:java goal or customize the pluginï¿½s configuration. See the plugin usage page for more details.
 If you do not use the starter parent, you need to include the following element inside the <build/> element of your pom.xml:
 
 <resources>
@@ -50,3 +50,11 @@ This will red the application-logger.yml in application.yml
 --
 VM rgument to provide active profile:
 -Dspring.profiles.active=local
+
+-----------------------------------------------------------------------------------------
+Default error mapping handling:
+Change the default error mapping path from /error to /app/error in application.yml
+  error:
+    path: /app/error
+
+Created AppErrorController which implements ErrorController to handle error response
