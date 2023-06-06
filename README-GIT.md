@@ -19,7 +19,7 @@ In our case, the above solution didn't work but store instead of manager worked 
 	git config --global credential.helper store
 
 This credentials as geeting store in global .git-credentials file as below:
-	https://bhushan-bafna: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@github.com
+	https://user:pass@github.com
 	
 and store configuration is seen in global .gitconfig file as below
 	[user]
