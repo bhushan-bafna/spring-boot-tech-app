@@ -36,7 +36,7 @@ public class JavaJDBCController {
 	 * @throws Exception
 	 * 
 	 */
-	@GetMapping("/data/java/jdbc/{id}")
+	@GetMapping("/jdbc/data/java/{id}")
 	@Operation(summary = "Get the person details")
 	@ApiResponses(value = { @ApiResponse(responseCode = "200", description = "Fetch Person Details for given id",
 		content = { @Content(mediaType = "application/json", schema = @Schema(implementation = PersonDTO.class)) }) })

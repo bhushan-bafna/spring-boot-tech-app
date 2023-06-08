@@ -3,7 +3,7 @@
 logging:
   #Set logging pattern for console and in file
   pattern:
-    console: '%d{yyyy-MM-dd HH:mm:ss} %-5level - %-36logger{36} - %msg%n'
+    console: '%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level - %-36logger{36} - %msg%n'
     file: '%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n'
   #log file path and name configuration
   file:

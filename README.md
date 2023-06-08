@@ -8,5 +8,6 @@ Modules:
  - spring-boot-tech-logging
  - java-jdbc
  - spring-boot-generic-ex-handle
+ - spring-boot-tech-aop
 
 -----------------------------------------------------------------------

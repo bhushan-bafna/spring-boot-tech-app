@@ -49,6 +49,10 @@
 			<groupId>com.tech.app</groupId>
 			<artifactId>spring-boot-generic-ex-handler</artifactId>
 		</dependency>
+		<dependency>
+			<groupId>com.tech.app</groupId>
+			<artifactId>spring-boot-tech-aop</artifactId>
+		</dependency>
 	</dependencies>
 
 

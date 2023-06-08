@@ -27,7 +27,6 @@ and store configuration is seen in global .gitconfig file as below
 		email = bhushan.bafna@gmail.com
 	[credential]
 		helper = store
- 
 ------------------------------------------------------------------------------------------------------------------------------------
 
 How to remove cached credentials from Git?
@@ -36,7 +35,7 @@ https://stackoverflow.com/questions/44246876/how-to-remove-cached-credentials-fr
 Run the following command in the terminal to remove your credentials stored in the cache
 
 	git config --global --unset credential.helper
-------------------------------------------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------------
 
 How do I resolve git saying "Commit your changes or stash them before you can merge"?
 https://stackoverflow.com/questions/15745045/how-do-i-resolve-git-saying-commit-your-changes-or-stash-them-before-you-can-me
