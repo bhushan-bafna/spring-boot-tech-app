@@ -6,13 +6,15 @@ import static java.lang.annotation.RetentionPolicy.RUNTIME;
 import java.lang.annotation.Retention;
 import java.lang.annotation.Target;
 
-@Retention(RUNTIME)
-@Target(METHOD)
 /**
+ * MethodExecutionTime is the marker annotation to mark the method to be scan by
+ * the Aspect in order to log the execution time of annotation method
  * 
  * @author Bhushan
  *
  */
+@Retention(RUNTIME)
+@Target(METHOD)
 public @interface MethodExecutionTime {
 
 }
