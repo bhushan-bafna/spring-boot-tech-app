@@ -1,8 +1,11 @@
 package com.tech.app.aop.aspect;
 
+import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.ProceedingJoinPoint;
+import org.aspectj.lang.annotation.After;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
+import org.aspectj.lang.annotation.Before;
 import org.springframework.stereotype.Component;
 
 import lombok.extern.slf4j.Slf4j;
@@ -25,7 +28,7 @@ public class AOPRestControllerLoggingAspect {
 	 * timing
 	 *
 	 * @param joinPoint
-	 * @return
+	 * @return Object
 	 * @throws Throwable
 	 */
 	@Around("execution(* com.tech.app.aop.controller.*.*(..)) || execution(* com.tech.app.aop.service.*.*(..))")
@@ -46,7 +49,7 @@ public class AOPRestControllerLoggingAspect {
 	 * execution timing
 	 *
 	 * @param joinPoint
-	 * @return
+	 * @return Object
 	 * @throws Throwable
 	 */
 	@Around("@annotation(com.tech.app.aop.annotation.MethodExecutionTime)")
@@ -58,4 +61,33 @@ public class AOPRestControllerLoggingAspect {
 		log.info("AnnotatedMethod - {} method executed in {} ms", joinPoint.getSignature().getName(), executionTime);
 		return proceed;
 	}
+
+	/**
+	 * 
+	 * This method will intercept all the method annotated with
+	 * {@link com.tech.app.aop.annotation.BeforeMethodExecution @BeforeMethodExecution}
+	 * annotation and execute the aspect before those method.
+	 *
+	 * @param joinPoint
+	 * @throws Throwable
+	 */
+	@Before("@annotation(com.tech.app.aop.annotation.BeforeMethodExecution)")
+	public void beforeMethodExecutionForAnnotatedMethod(JoinPoint joinPoint) throws Throwable {
+		log.info("In beforeMethodExecutionForAnnotatedMethod()");
+	}
+
+	/**
+	 * 
+	 * This method will intercept all the method annotated with
+	 * {@link com.tech.app.aop.annotation.BeforeMethodExecution @AfterMethodExecution}
+	 * annotation and execute the aspect after those method.
+	 *
+	 * @param joinPoint
+	 * @throws Throwable
+	 */
+	@After("@annotation(com.tech.app.aop.annotation.AfterMethodExecution)")
+	public void afterMethodExecutionForAnnotatedMethod(JoinPoint joinPoint) throws Throwable {
+		log.info("In afterMethodExecutionForAnnotatedMethod()");
+	}
+
 }

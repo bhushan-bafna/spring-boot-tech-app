@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 import lombok.extern.slf4j.Slf4j;
 
 /**
+ * This is service class
  * 
  * @author Bhushan
  *
@@ -13,6 +14,12 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class AOPService {
 
+	/**
+	 * 
+	 * This method is serviceMethod()
+	 *
+	 * @throws InterruptedException
+	 */
 	public void serviceMethod() throws InterruptedException {
 		log.info("In servceMethod().....");
 		Thread.sleep(5000);
