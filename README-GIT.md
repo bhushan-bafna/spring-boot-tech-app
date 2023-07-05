@@ -51,3 +51,6 @@ code commit steps
 	 - [git add <file-name>] -> to add single file  OR  - [git add .] -> to add all the files
 	 - [git commit -m 'commit msg']
 	 - [git push]
+
+------------------------------------------------------------------------------------------------------------------------------------	 
+Cheat Code to Update README.md file in git - https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet#tables
