@@ -5,7 +5,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
 
 import com.tech.app.jdbc.config.DBConfigUtil;
 import com.tech.app.jdbc.dao.PersonDAO;
@@ -17,7 +17,7 @@ import lombok.extern.slf4j.Slf4j;
  * 
  * @author Bhushan Bafna
  */
-@Component
+@Repository
 @Slf4j
 public class JavajdbcCURDRepositoryImpl {
 
@@ -30,17 +30,17 @@ public class JavajdbcCURDRepositoryImpl {
 	 */
 	public PersonDAO getData(String id) throws SQLException {
 		PersonDAO personDao = new PersonDAO();
-		String query = "SELECT * FROM PERSON where PERSON_ID='" + id + "'";
+		String query = "SELECT * FROM PERSON where person_PERSON_id='" + id + "'";
 		log.info(query);
 		try (Connection conn = DBConfigUtil.getConnection();
 				Statement stmt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
 				ResultSet rs = stmt.executeQuery(query);) {
 //			rs.next();
 			if (rs.first()) {
-				personDao.setInstanz(rs.getLong("INSTANCE"));
-				personDao.setFirstName(rs.getString("FIRST_NAME"));
-				personDao.setLastName(rs.getString("LAST_NAME"));
-				personDao.setId(rs.getString("PERSON_ID"));
+				personDao.setInstanz(rs.getLong("person_instanz"));
+//				personDao.setFirstName(rs.getString("FIRST_NAME"));
+//				personDao.setLastName(rs.getString("LAST_NAME"));
+//				personDao.setId(rs.getString("PERSON_ID"));
 				log.info("Person - {}", personDao.toString());
 			}
 		} catch (SQLException e) {
@@ -52,33 +52,31 @@ public class JavajdbcCURDRepositoryImpl {
 
 	public PersonDAO executeCRUDOperation(String id) throws SQLException {
 		PersonDAO personDao = new PersonDAO();
-		String query = "SELECT * FROM PERSON where PERSON_ID='" + id + "'";
+		String query = "SELECT * FROM PERSON where person_PERSON_id='" + id + "'";
 		log.info(query);
 		try (Connection conn = DBConfigUtil.getConnection();
 				Statement stmt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
 				ResultSet rs = stmt.executeQuery(query);) {
 //			rs.next();
 			if (rs.first()) {
-				personDao.setInstanz(rs.getLong("INSTANCE"));
-				personDao.setFirstName(rs.getString("FIRST_NAME"));
-				personDao.setLastName(rs.getString("LAST_NAME"));
-				personDao.setId(rs.getString("PERSON_ID"));
+				personDao.setInstanz(rs.getLong("person_instanz"));
 				log.info("Person - {}", personDao.toString());
 			}
 
 			// Additional operation that can be performed are as below.
 			// Insert data
-			String insertQuery = "INSERT INTO PERSON (name, age) VALUES ('John Doe', 30)";
+			String insertQuery = "INSERT INTO PERSON_EVENT (INSTANZ, INSTANZ_DATE, APPLICATION, PERSON_ID, EVENT_NAME, STARTED, FINISHED, STATE) \r\n"
+					+ "values (1, sysdate, 'NSI', 'p100001', 'NSI', sysdate, sysdate, 0)";
 			int rowsInserted = stmt.executeUpdate(insertQuery);
 			System.out.println("Rows inserted: " + rowsInserted);
 
 			// Update data
-			String updateQuery = "UPDATE PERSON SET age = 31 WHERE id = 1";
+			String updateQuery = "UPDATE PERSON_EVENT SET PERSON_ID = 'p110011' WHERE INSTANZ = 1";
 			int rowsUpdated = stmt.executeUpdate(updateQuery);
 			System.out.println("Rows updated: " + rowsUpdated);
 
 			// Delete data
-			String deleteQuery = "DELETE FROM PERSON WHERE id = 2";
+			String deleteQuery = "DELETE FROM PERSON_EVENT WHERE INSTANZ = 2";
 			int rowsDeleted = stmt.executeUpdate(deleteQuery);
 			System.out.println("Rows deleted: " + rowsDeleted);
 		} catch (SQLException e) {

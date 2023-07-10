@@ -4,24 +4,24 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
 
 import com.tech.app.jdbc.config.DBConfigUtil;
 
 import lombok.extern.slf4j.Slf4j;
 
-@Component
+@Repository
 @Slf4j
 public class JDBCTransactionExample {
-	public String showTxExample() throws SQLException {
+	public String executeTxExample() throws SQLException {
 		Connection connection = null;
 		try {
 			connection = DBConfigUtil.getConnection();
 			connection.setAutoCommit(false); // Disable auto-commit
 
 			// Perform multiple database operations within a transaction
-			insertEmployee(connection, "John Doe", 30);
-			updateEmployeeAge(connection, "John Doe", 31);
+			insertEmployee(connection);
+			updateEmployeeAge(connection);
 
 			// Commit the transaction if all operations succeed
 			connection.commit();
@@ -30,30 +30,32 @@ public class JDBCTransactionExample {
 		} catch (SQLException e) {
 			log.error("Exception Strack Trace - {}", e.getMessage());
 			rollbackTransaction(connection);
-			return "Exception Occured!";
+			throw e;
 		} finally {
 			closeConnection(connection);
 		}
 	}
 
-	private static void insertEmployee(Connection connection, String name, int age) throws SQLException {
-		String insertQuery = "INSERT INTO PERSON (name, age) VALUES (?, ?)";
+	private static void insertEmployee(Connection connection) throws SQLException {
+		String insertQuery = "INSERT INTO PERSON_EVENT (PER_INSTANZ, PER_INSTANZIERUNG, PER_APPLICATION, PER_NPERSON_ID, PER_EVENT_NAME, PER_STARTED, PER_FINISHED, PER_STATE)"
+				+ "values (?, sysdate, 'NSI', 'p100001', 'NSI', sysdate, sysdate, 0)";
 		try (PreparedStatement statement = connection.prepareStatement(insertQuery)) {
-			statement.setString(1, name);
-			statement.setInt(2, age);
+			statement.setInt(1, 2);
 			statement.executeUpdate();
 			log.info("Employee inserted successfully!");
 		}
+//		log.info("Explicit Exception Thrown!");
+//		throw new SQLException("Explicit Exception Thrown!");
 	}
 
-	private static void updateEmployeeAge(Connection connection, String name, int newAge) throws SQLException {
-		String updateQuery = "UPDATE employees SET age = ? WHERE name = ?";
+	private static void updateEmployeeAge(Connection connection) throws SQLException {
+		String updateQuery = "UPDATE PERSON_EVENT SET PER_NPERSON_ID = ? WHERE PER_INSTANZ = ?";
 		try (PreparedStatement statement = connection.prepareStatement(updateQuery)) {
-			statement.setInt(1, newAge);
-			statement.setString(2, name);
+			statement.setString(1, "p110011");
+			statement.setInt(2, 2);
 			int rowsUpdated = statement.executeUpdate();
 			if (rowsUpdated > 0) {
-				log.info("Employee age updated successfully!");
+				log.info("Employee id updated successfully!");
 			} else {
 				throw new SQLException("Employee not found!");
 			}
@@ -71,13 +73,14 @@ public class JDBCTransactionExample {
 		}
 	}
 
-	private static void closeConnection(Connection connection) {
+	private static void closeConnection(Connection connection) throws SQLException {
 		if (connection != null) {
 			try {
 				connection.close();
 				log.info("Connection Closed!");
 			} catch (SQLException e) {
-				e.printStackTrace();
+				log.error("Exception Strack Trace - {}", e.getMessage());
+				throw e;
 			}
 		}
 	}

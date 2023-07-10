@@ -1,5 +1,7 @@
 package com.tech.app.exception.handle;
 
+import java.sql.SQLException;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -36,13 +38,31 @@ public class GlobalControllerExceptionHandler {
 	@ResponseStatus(HttpStatus.NOT_FOUND)
 	@ApiResponses(value = { @ApiResponse(responseCode = "204", description = "Data not found", content = {
 			@Content(mediaType = "application/json", schema = @Schema(implementation = ErrorResponse.class)) }) })
-	public ResponseEntity<ErrorResponse> handleBookNotFound(RuntimeException ex) {
+	public ResponseEntity<ErrorResponse> handleNotFound(RuntimeException ex) {
 		log.info("excetion in handler");
 		NotFoundException nFex = (NotFoundException) ex;
 		ErrorResponse error = new ErrorResponse();
 		error.setCode(nFex.getErrorCode());
 		error.setMessage(nFex.getErrorMsg());
 		return new ResponseEntity<ErrorResponse>(error, HttpStatus.NOT_FOUND);
+	}
+	
+	/**
+	 * Exception handler method for catching SQLException.
+	 * 
+	 * @param ex
+	 * @return
+	 */
+	@ExceptionHandler(SQLException.class)
+	@ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
+	@ApiResponses(value = { @ApiResponse(responseCode = "500", description = "SQL Exception Occured", content = {
+			@Content(mediaType = "application/json", schema = @Schema(implementation = ErrorResponse.class)) }) })
+	public ResponseEntity<ErrorResponse> handleSQLException(SQLException ex) {
+		log.info("excetion in handler");
+		ErrorResponse error = new ErrorResponse();
+		error.setCode("SQL_ERROR");
+		error.setMessage(ex.getMessage());
+		return new ResponseEntity<ErrorResponse>(error, HttpStatus.INTERNAL_SERVER_ERROR);
 	}
 
 	/**
