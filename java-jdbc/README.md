@@ -22,6 +22,7 @@ Transaction management: JDBC supports transaction management, allowing you to gr
 
 Database metadata: JDBC provides methods to retrieve metadata about the database, such as information about tables, columns, indexes, and constraints. This allows you to dynamically interact with the database schema.
 
+
 Stored procedures: JDBC enables you to execute stored procedures defined in the database. Stored procedures are precompiled database programs that can be called from Java to perform complex operations on the database server.
 
 Overall, JDBC is a powerful and widely-used technology that enables Java applications to interact with databases, making it an essential tool for developing database-driven applications, web applications, and enterprise systems.
