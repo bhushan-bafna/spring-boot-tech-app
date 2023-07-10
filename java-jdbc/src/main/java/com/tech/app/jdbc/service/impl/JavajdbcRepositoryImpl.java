@@ -47,6 +47,22 @@ public class JavajdbcRepositoryImpl {
 				personDao.setId(rs.getString("PERSON_ID"));
 				log.info("Person - {}", personDao.toString());
 			}
+			
+			//Additional operation that can be performed are as below.
+			// Insert data
+            String insertQuery = "INSERT INTO PERSON (name, age) VALUES ('John Doe', 30)";
+            int rowsInserted = stmt.executeUpdate(insertQuery);
+            System.out.println("Rows inserted: " + rowsInserted);
+
+            // Update data
+            String updateQuery = "UPDATE PERSON SET age = 31 WHERE id = 1";
+            int rowsUpdated = stmt.executeUpdate(updateQuery);
+            System.out.println("Rows updated: " + rowsUpdated);
+
+            // Delete data
+            String deleteQuery = "DELETE FROM PERSON WHERE id = 2";
+            int rowsDeleted = stmt.executeUpdate(deleteQuery);
+            System.out.println("Rows deleted: " + rowsDeleted);
 		} catch (SQLException e) {
 			log.error("Exception Strack Trace ", e);
 			throw e;
