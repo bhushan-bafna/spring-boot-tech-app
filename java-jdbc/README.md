@@ -10,19 +10,16 @@ JDBC follows a standardized architecture known as the "Java Database Connectivit
 
  - ResultSet: This interface represents the result of a query execution. It provides methods for navigating through the result set, retrieving data from the columns, and performing operations on the data.
  
- 
- 
  #JDBC can be used for various purposes, including but not limited to:
 
-Database connectivity: JDBC enables Java programs to connect to a wide range of databases such as MySQL, Oracle, PostgreSQL, SQLite, etc. This allows applications to interact with the data stored in these databases.
+ - Database connectivity: JDBC enables Java programs to connect to a wide range of databases such as MySQL, Oracle, PostgreSQL, SQLite, etc. This allows applications to interact with the data stored in these databases.
 
-Data retrieval and manipulation: JDBC allows you to execute SQL queries and retrieve data from the database. You can also perform data manipulation operations like inserts, updates, and deletes using JDBC.
+ - Data retrieval and manipulation: JDBC allows you to execute SQL queries and retrieve data from the database. You can also perform data manipulation operations like inserts, updates, and deletes using JDBC.
 
-Transaction management: JDBC supports transaction management, allowing you to group database operations into transactions. Transactions ensure the atomicity, consistency, isolation, and durability (ACID) properties of the database.
+ - Transaction management: JDBC supports transaction management, allowing you to group database operations into transactions. Transactions ensure the atomicity, consistency, isolation, and durability (ACID) properties of the database.
 
-Database metadata: JDBC provides methods to retrieve metadata about the database, such as information about tables, columns, indexes, and constraints. This allows you to dynamically interact with the database schema.
+ - Database metadata: JDBC provides methods to retrieve metadata about the database, such as information about tables, columns, indexes, and constraints. This allows you to dynamically interact with the database schema.
 
-
-Stored procedures: JDBC enables you to execute stored procedures defined in the database. Stored procedures are precompiled database programs that can be called from Java to perform complex operations on the database server.
+ - Stored procedures: JDBC enables you to execute stored procedures defined in the database. Stored procedures are precompiled database programs that can be called from Java to perform complex operations on the database server.
 
 Overall, JDBC is a powerful and widely-used technology that enables Java applications to interact with databases, making it an essential tool for developing database-driven applications, web applications, and enterprise systems.
