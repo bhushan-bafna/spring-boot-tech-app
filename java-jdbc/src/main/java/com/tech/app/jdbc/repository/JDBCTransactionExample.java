@@ -28,7 +28,7 @@ public class JDBCTransactionExample {
 			log.info("Transaction committed successfully!");
 			return "Transaction committed successfully!";
 		} catch (SQLException e) {
-			e.printStackTrace();
+			log.error("Exception Strack Trace - {}", e.getMessage());
 			rollbackTransaction(connection);
 			return "Exception Occured!";
 		} finally {

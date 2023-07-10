@@ -20,23 +20,21 @@ import lombok.extern.slf4j.Slf4j;
 @Component
 @Slf4j
 public class JavajdbcCURDRepositoryImpl {
-	
-	
-	
+
 	/**
 	 * Method to fetch person data from DB by id
 	 * 
 	 * @param id
 	 * @return
-	 * @throws SQLException 
+	 * @throws SQLException
 	 */
 	public PersonDAO getData(String id) throws SQLException {
 		PersonDAO personDao = new PersonDAO();
 		String query = "SELECT * FROM PERSON where PERSON_ID='" + id + "'";
 		log.info(query);
 		try (Connection conn = DBConfigUtil.getConnection();
-			Statement stmt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
-			ResultSet rs = stmt.executeQuery(query);) {
+				Statement stmt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+				ResultSet rs = stmt.executeQuery(query);) {
 //			rs.next();
 			if (rs.first()) {
 				personDao.setInstanz(rs.getLong("INSTANCE"));
@@ -45,27 +43,50 @@ public class JavajdbcCURDRepositoryImpl {
 				personDao.setId(rs.getString("PERSON_ID"));
 				log.info("Person - {}", personDao.toString());
 			}
-			
-			//Additional operation that can be performed are as below.
-			// Insert data
-            String insertQuery = "INSERT INTO PERSON (name, age) VALUES ('John Doe', 30)";
-            int rowsInserted = stmt.executeUpdate(insertQuery);
-            System.out.println("Rows inserted: " + rowsInserted);
-
-            // Update data
-            String updateQuery = "UPDATE PERSON SET age = 31 WHERE id = 1";
-            int rowsUpdated = stmt.executeUpdate(updateQuery);
-            System.out.println("Rows updated: " + rowsUpdated);
-
-            // Delete data
-            String deleteQuery = "DELETE FROM PERSON WHERE id = 2";
-            int rowsDeleted = stmt.executeUpdate(deleteQuery);
-            System.out.println("Rows deleted: " + rowsDeleted);
 		} catch (SQLException e) {
-			log.error("Exception Strack Trace ", e);
+			log.error("Exception Strack Trace - {}", e);
 			throw e;
 		}
 		return personDao;
 	}
-	
+
+	public PersonDAO executeCRUDOperation(String id) throws SQLException {
+		PersonDAO personDao = new PersonDAO();
+		String query = "SELECT * FROM PERSON where PERSON_ID='" + id + "'";
+		log.info(query);
+		try (Connection conn = DBConfigUtil.getConnection();
+				Statement stmt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+				ResultSet rs = stmt.executeQuery(query);) {
+//			rs.next();
+			if (rs.first()) {
+				personDao.setInstanz(rs.getLong("INSTANCE"));
+				personDao.setFirstName(rs.getString("FIRST_NAME"));
+				personDao.setLastName(rs.getString("LAST_NAME"));
+				personDao.setId(rs.getString("PERSON_ID"));
+				log.info("Person - {}", personDao.toString());
+			}
+
+			// Additional operation that can be performed are as below.
+			// Insert data
+			String insertQuery = "INSERT INTO PERSON (name, age) VALUES ('John Doe', 30)";
+			int rowsInserted = stmt.executeUpdate(insertQuery);
+			System.out.println("Rows inserted: " + rowsInserted);
+
+			// Update data
+			String updateQuery = "UPDATE PERSON SET age = 31 WHERE id = 1";
+			int rowsUpdated = stmt.executeUpdate(updateQuery);
+			System.out.println("Rows updated: " + rowsUpdated);
+
+			// Delete data
+			String deleteQuery = "DELETE FROM PERSON WHERE id = 2";
+			int rowsDeleted = stmt.executeUpdate(deleteQuery);
+			System.out.println("Rows deleted: " + rowsDeleted);
+		} catch (SQLException e) {
+			log.error("Exception Strack Trace - {}", e);
+			throw e;
+		}
+		return personDao;
+
+	}
+
 }

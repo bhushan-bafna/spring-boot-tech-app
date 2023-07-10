@@ -22,7 +22,7 @@ public class DBConfigUtil {
 		try {
 			return DriverManager.getConnection(DB_URL, USER, PASS);
 		} catch (SQLException e) {
-			log.info("Error Creating Connection :: {}", e.getMessage());
+			log.error("Exception Strack Trace - {}", e.getMessage());
 			throw e;
 		}
 	}
