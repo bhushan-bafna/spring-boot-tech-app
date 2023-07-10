@@ -54,15 +54,6 @@
 				<version>${spring-boot.version}</version>
 			</dependency>
 
-
-			<!-- Aspectj - aspectjweaver -->
-			<dependency>
-				<groupId>org.aspectj</groupId>
-				<artifactId>aspectjweaver</artifactId>
-				<version>${aspectj.version}</version>
-				<scope>runtime</scope>
-			</dependency>
-
 			<!-- Spring Open API 3.0 / Swagger 3.0 Documentation -->
 			<dependency>
 				<groupId>org.springdoc</groupId>

@@ -16,7 +16,9 @@ Maven Denpendencies for AOP support and Aspect
 				<version>${aspectj.version}</version>
 				<scope>runtime</scope>
 			</dependency>
-			
+
+ -->> aspectjweaver -  this dependency can be omitted since it is internally included into 
+
 Annotations to look at
 @Aspect
 @PointCut
