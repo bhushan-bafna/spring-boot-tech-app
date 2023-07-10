@@ -1,13 +1,13 @@
-package com.tech.app.jdbc.service.impl;
+package com.tech.app.jdbc.repository;
 
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
 import org.springframework.stereotype.Component;
 
+import com.tech.app.jdbc.config.DBConfigUtil;
 import com.tech.app.jdbc.dao.PersonDAO;
 
 import lombok.extern.slf4j.Slf4j;
@@ -19,11 +19,9 @@ import lombok.extern.slf4j.Slf4j;
  */
 @Component
 @Slf4j
-public class JavajdbcRepositoryImpl {
+public class JavajdbcCURDRepositoryImpl {
 	
-	final String DB_URL = "jdbc:oracle:thin:@{IP-ADDRESS}:1521:{SID}";
-	final String USER = "username";
-	final String PASS = "passwrod";
+	
 	
 	/**
 	 * Method to fetch person data from DB by id
@@ -36,7 +34,7 @@ public class JavajdbcRepositoryImpl {
 		PersonDAO personDao = new PersonDAO();
 		String query = "SELECT * FROM PERSON where PERSON_ID='" + id + "'";
 		log.info(query);
-		try (Connection conn = DriverManager.getConnection(DB_URL, USER, PASS);
+		try (Connection conn = DBConfigUtil.getConnection();
 			Statement stmt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
 			ResultSet rs = stmt.executeQuery(query);) {
 //			rs.next();

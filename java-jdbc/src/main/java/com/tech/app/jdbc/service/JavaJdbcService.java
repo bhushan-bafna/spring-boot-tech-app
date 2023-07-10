@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 import com.tech.app.exception.NotFoundException;
 import com.tech.app.jdbc.dao.PersonDAO;
 import com.tech.app.jdbc.dto.PersonDTO;
-import com.tech.app.jdbc.service.impl.JavajdbcRepositoryImpl;
+import com.tech.app.jdbc.repository.JavajdbcCURDRepositoryImpl;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -21,7 +21,7 @@ import lombok.extern.slf4j.Slf4j;
 public class JavaJdbcService {
 	
 	@Autowired
-	private JavajdbcRepositoryImpl javajdbcDaoImpl;
+	private JavajdbcCURDRepositoryImpl javajdbcDaoImpl;
 	
 	/**
 	 * Method to get connect to repository and fetch person details
