@@ -46,13 +46,13 @@ public class JavaJDBCController {
 	@ApiResponses(value = {
 			@ApiResponse(responseCode = "200", description = "Fetch Person Details for given id", content = {
 					@Content(mediaType = "application/json", schema = @Schema(implementation = PersonDTO.class)) }) })
-	public PersonDTO getDataUsingJavaJDBC(@PathVariable("id") String id) throws Exception {
+	public PersonDTO getDataUsingJavaJDBC(@PathVariable("id") int id) throws Exception {
 		log.info("getDataUsingJavaJDBC(), id - {}", id);
 		return javaJDBCService.getDataUsingJavaJDBC(id);
 	}
 
 	/**
-	 * This method is to showcase the example of CRUD Operation using Java JDBC
+	 * This method is to show case the example of CRUD Operation using Java JDBC
 	 * 
 	 * @throws Exception
 	 * 

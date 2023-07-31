@@ -7,20 +7,22 @@ import java.sql.SQLException;
 import lombok.extern.slf4j.Slf4j;
 
 /**
- * This is the onfig class to get DB connection
+ * This is the configuration class to get DB connection
  * 
  * @author Bhushan
  */
 @Slf4j
 public class DBConfigUtil {
 	
-	final static String DB_URL = "jdbc:oracle:thin:@{IP-ADDRESS}:1521:{SID}";
-	final static String USER = "username";
-	final static String PASS = "passwrod";
+	final static String DB_URL = "jdbc:oracle:thin:@192.168.1.7:1521:XE";
+	final static String USER = "C##springtechappdb";
+	final static String PASS = "springtechappdb";
 	
 	public static Connection getConnection() throws SQLException {
+		
 		try {
-			return DriverManager.getConnection(DB_URL, USER, PASS);
+			Connection connection = DriverManager.getConnection(DB_URL, USER, PASS);
+			return connection;
 		} catch (SQLException e) {
 			log.error("Exception Strack Trace - {}", e.getMessage());
 			throw e;

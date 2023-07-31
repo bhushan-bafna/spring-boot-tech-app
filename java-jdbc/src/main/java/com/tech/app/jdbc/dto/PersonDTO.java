@@ -10,9 +10,9 @@ import lombok.Data;
 @Data
 public class PersonDTO {
 	
-	private Long instanz;
+	private int id;
 	private String firstName;
 	private String lastName;
-	private String id;
+	private String email;
 	
 }

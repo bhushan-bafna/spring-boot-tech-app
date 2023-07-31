@@ -37,12 +37,12 @@ public class JavaJdbcService {
 	 * @throws SQLException 
 	 * @throws Exception
 	 */
-	public PersonDTO getDataUsingJavaJDBC(String id) throws SQLException  {
+	public PersonDTO getDataUsingJavaJDBC(int id) throws SQLException  {
 		PersonDAO personDao = javajdbcDaoImpl.getData(id);
 		PersonDTO personDto = new PersonDTO();
 		BeanUtils.copyProperties(personDao, personDto);
 		log.info("personDto - {}", personDto.toString());
-		if (personDto.getInstanz() == null)
+		if (personDto.getId() == 0)
 			throw new NotFoundException("NOTFOUND", "Person Details not found");
 		return personDto;
 	}
@@ -60,7 +60,7 @@ public class JavaJdbcService {
 		PersonDTO personDto = new PersonDTO();
 		BeanUtils.copyProperties(personDao, personDto);
 		log.info("personDto - {}", personDto.toString());
-		if (personDto.getInstanz() == null)
+		if (personDto.getId() == 0)
 			throw new NotFoundException("NOTFOUND", "Person Details not found");
 		return personDto;
 	}
