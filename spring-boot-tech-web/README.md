@@ -48,7 +48,7 @@ Include below line in application.yml which i present in web module
 This will red the application-logger.yml in application.yml
 
 --
-VM rgument to provide active profile:
+VM argument to provide active profile:
 -Dspring.profiles.active=local
 
 -----------------------------------------------------------------------------------------

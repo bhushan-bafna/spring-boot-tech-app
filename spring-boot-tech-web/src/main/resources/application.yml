@@ -1,7 +1,8 @@
 spring:
   profiles:
     include:
-    - logger
+      - logger-${spring.profiles.active}
+      - log-${spring.profiles.active}
     
 server:
   servlet:
