@@ -1,5 +1,11 @@
-
 #Automatic Property Expansion Using Maven - '@project.name@' will read the value from pom.xml assign to variable project.name in yml file
 project:
   name: ${maven.project.name} Local
   version: '@project.version@'
+
+info:
+  app:
+    name: Spring Boot Usage Application
+    description: This is to showcase example for different features and modules in spring
+    
+  

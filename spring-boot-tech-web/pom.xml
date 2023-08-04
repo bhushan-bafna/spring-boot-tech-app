@@ -25,9 +25,19 @@
 			<optional>true</optional>
 		</dependency>
 
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-actuator</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>de.codecentric</groupId>
+			<artifactId>spring-boot-admin-starter-server</artifactId>
+		</dependency>
+
 		<!-- Spring Open API Documentation // commented here since managed from 
 			parent pom -->
-		<!-- <dependency> <groupId>org.springdoc</groupId> <artifactId>springdoc-openapi-ui</artifactId> 
+		<!-- <dependency> <groupId>org.springdoc</groupId>
+		<artifactId>springdoc-openapi-ui</artifactId> 
 			</dependency> -->
 
 		<!-- Lombook Dependency -->
@@ -60,7 +70,8 @@
 		<finalName>spring-boot-tech-web</finalName>
 
 		<!-- Automatic Property Expansion Using Maven -->
-		<!-- resources and maven-resource-plugin, will unable to read the property 
+		<!-- resources and maven-resource-plugin, will unable to read the
+		property 
 			from pom.xml into application.properties / application.yml files which then 
 			further could be referred into application directly. See read me document 
 			for more details -->

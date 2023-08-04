@@ -18,6 +18,7 @@
 		<springdoc-openapi-ui.version>1.6.14</springdoc-openapi-ui.version>
 		<aspectj.version>1.9.19</aspectj.version>
 		<oracle.ojdbc.version>19.3.0.0</oracle.ojdbc.version>
+		<spring-boot-admin.version>2.7.4</spring-boot-admin.version>
 	</properties>
 	<dependencyManagement>
 		<dependencies>
@@ -45,7 +46,8 @@
 				<artifactId>spring-boot-devtools</artifactId>
 				<version>${spring-boot.version}</version>
 				<scope>runtime</scope>
-				<!-- optional=true avoid dependency to be part of package / turning it 
+				<!-- optional=true avoid dependency to be part of package /
+				turning it 
 					off in production, -->
 				<optional>true</optional>
 			</dependency>
@@ -53,6 +55,18 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-starter-aop</artifactId>
 				<version>${spring-boot.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-starter-actuator</artifactId>
+				<version>${spring-boot.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>de.codecentric</groupId>
+				<artifactId>spring-boot-admin-dependencies</artifactId>
+				<version>${spring-boot-admin.version}</version>
+				<type>pom</type>
+				<scope>import</scope>
 			</dependency>
 
 			<!-- Spring Open API 3.0 / Swagger 3.0 Documentation -->
@@ -122,7 +136,7 @@
 			<artifactId>junit</artifactId>
 			<scope>test</scope>
 		</dependency>
-		
+
 	</dependencies>
 	<modules>
 		<module>spring-boot-tech-web</module>
