@@ -1,4 +1,4 @@
-drop table person "if exists";
+drop table person ;
 
 CREATE TABLE person (
   id NUMBER PRIMARY KEY,

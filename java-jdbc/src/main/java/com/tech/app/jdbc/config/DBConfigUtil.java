@@ -14,9 +14,9 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class DBConfigUtil {
 	
-	final static String DB_URL = "jdbc:oracle:thin:@192.168.1.7:1521:XE";
+	final static String DB_URL = "jdbc:oracle:thin:@localhost:1521:XE";
 	final static String USER = "C##springtechappdb";
-	final static String PASS = "springtechappdb";
+	final static String PASS = "C##springtechappdb";
 	
 	public static Connection getConnection() throws SQLException {
 		
