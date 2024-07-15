@@ -1,99 +1,90 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
-	xmlns="http://maven.apache.org/POM/4.0.0"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-	<modelVersion>4.0.0</modelVersion>
-	<parent>
-		<groupId>com.tech.app</groupId>
-		<artifactId>spring-boot-tech-app</artifactId>
-		<version>0.0.1-SNAPSHOT</version>
-	</parent>
-	<artifactId>spring-boot-tech-web</artifactId>
-	<packaging>war</packaging>
-	<name>spring-boot-tech-web Maven Webapp</name>
+        xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
+        xmlns="http://maven.apache.org/POM/4.0.0"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>com.tech.app</groupId>
+        <artifactId>spring-boot-tech-app</artifactId>
+        <version>0.0.1-SNAPSHOT</version>
+    </parent>
+    <artifactId>spring-boot-tech-web</artifactId>
+    <packaging>war</packaging>
+    <name>spring-boot-tech-web Maven Webapp</name>
 
-	<dependencies>
-		<!-- Spring Dependencies -->
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-web</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-devtools</artifactId>
-			<optional>true</optional>
-		</dependency>
+    <dependencies>
+        <!-- Spring Dependencies -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
 
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-actuator</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>de.codecentric</groupId>
-			<artifactId>spring-boot-admin-starter-server</artifactId>
-		</dependency>
+        <!--	Dependency to enable devtool so the server restart automatically of changes	-->
+        <!--<dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-devtools</artifactId>
+            <optional>true</optional>
+        </dependency>-->
 
-		<!-- Spring Open API Documentation // commented here since managed from 
-			parent pom -->
-		<!-- <dependency> <groupId>org.springdoc</groupId>
-		<artifactId>springdoc-openapi-ui</artifactId> 
-			</dependency> -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-actuator</artifactId>
+        </dependency>
 
-		<!-- Lombook Dependency -->
-		<dependency>
-			<groupId>org.projectlombok</groupId>
-			<artifactId>lombok</artifactId>
-		</dependency>
-
-		<!-- project Dependency -->
-		<dependency>
-			<groupId>com.tech.app</groupId>
-			<artifactId>spring-boot-tech-logging</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>com.tech.app</groupId>
-			<artifactId>java-jdbc</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>com.tech.app</groupId>
-			<artifactId>spring-boot-generic-ex-handler</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>com.tech.app</groupId>
-			<artifactId>spring-boot-tech-aop</artifactId>
-		</dependency>
-	</dependencies>
+        <!-- project Dependency -->
+        <dependency>
+            <groupId>com.tech.app</groupId>
+            <artifactId>spring-boot-tech-logging</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.tech.app</groupId>
+            <artifactId>java-jdbc</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.tech.app</groupId>
+            <artifactId>spring-boot-generic-ex-handler</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.tech.app</groupId>
+            <artifactId>spring-boot-tech-aop</artifactId>
+        </dependency>
+    </dependencies>
 
 
-	<build>
-		<finalName>spring-boot-tech-web</finalName>
+    <build>
+        <finalName>spring-boot-tech-web</finalName>
 
-		<!-- Automatic Property Expansion Using Maven -->
-		<!-- resources and maven-resource-plugin, will unable to read the
-		property 
-			from pom.xml into application.properties / application.yml files which then 
-			further could be referred into application directly. See read me document 
-			for more details -->
-		<resources>
-			<resource>
-				<directory>src/main/resources</directory>
-				<filtering>true</filtering>
-			</resource>
-		</resources>
-		<plugins>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-resources-plugin</artifactId>
-				<version>3.3.0</version>
-				<configuration>
-					<delimiters>
-						<delimiter>@</delimiter>
-					</delimiters>
-					<useDefaultDelimiters>false</useDefaultDelimiters>
-				</configuration>
-			</plugin>
-		</plugins>
-	</build>
+        <!-- Automatic Property Expansion Using Maven -->
+        <!-- resources and maven-resource-plugin, will unable to read the
+        property
+            from pom.xml into application.properties / application.yml files which then
+            further could be referred into application directly. See read me document
+            for more details -->
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>true</filtering>
+            </resource>
+        </resources>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-resources-plugin</artifactId>
+                <version>3.3.0</version>
+                <configuration>
+                    <delimiters>
+                        <delimiter>@</delimiter>
+                    </delimiters>
+                    <useDefaultDelimiters>false</useDefaultDelimiters>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 
 </project>

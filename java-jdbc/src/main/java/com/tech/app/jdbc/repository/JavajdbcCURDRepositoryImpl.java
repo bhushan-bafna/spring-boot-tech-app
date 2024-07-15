@@ -8,12 +8,12 @@ import java.sql.Statement;
 import org.springframework.stereotype.Repository;
 
 import com.tech.app.jdbc.config.DBConfigUtil;
-import com.tech.app.jdbc.dao.PersonDAO;
+import com.tech.app.jdbc.dao.ActorDAO;
 
 import lombok.extern.slf4j.Slf4j;
 
 /**
- * Person repository to perform DB related operation
+ * Actor repository to perform DB related operation
  * 
  * @author Bhushan Bafna
  */
@@ -22,67 +22,97 @@ import lombok.extern.slf4j.Slf4j;
 public class JavajdbcCURDRepositoryImpl {
 
 	/**
-	 * Method to fetch person data from DB by id
+	 * Method to fetch data from DB by id
 	 * 
 	 * @param id
 	 * @return
 	 * @throws SQLException
 	 */
-	public PersonDAO getData(int id) throws SQLException {
-		PersonDAO personDao = new PersonDAO();
-		String query = "SELECT * FROM PERSON where id=" + id;
+	public ActorDAO getDataByID(int id) throws SQLException {
+		ActorDAO actorDao = new ActorDAO();
+		String query = "SELECT * FROM ACTOR where actor_id=" + id;
 		log.info(query);
 		try (Connection conn = DBConfigUtil.getConnection();
 				Statement stmt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
 				ResultSet rs = stmt.executeQuery(query);) {
 //			rs.next();
 			if (rs.first()) {
-				personDao.setId(rs.getInt("id"));
-				personDao.setFirstName(rs.getString("firstname"));
-				personDao.setLastName(rs.getString("lastname"));
-				personDao.setEmail(rs.getString("email"));
-				log.info("Person - {}", personDao.toString());
+				actorDao.setId(rs.getInt("actor_id"));
+				actorDao.setFirstName(rs.getString("first_name"));
+				actorDao.setLastName(rs.getString("last_name"));
+				actorDao.setUpdateOn(rs.getString("last_update"));
+				log.info("Actor - {}", actorDao.toString());
 			}
 		} catch (SQLException e) {
 			log.error("Exception Strack Trace - {}", e);
 			throw e;
 		}
-		return personDao;
+		return actorDao;
 	}
 
-	public PersonDAO executeCRUDOperation(String id) throws SQLException {
-		PersonDAO personDao = new PersonDAO();
-		String query = "SELECT * FROM PERSON where id=" + id;
+	/**
+	 * Method to fetch data from DB by first name
+	 *
+	 * @param firstName
+	 * @return
+	 * @throws SQLException
+	 */
+	public ActorDAO getDataByName(String firstName) throws SQLException {
+		ActorDAO actorDao = new ActorDAO();
+		String query = "SELECT * FROM ACTOR where first_name = '" + firstName +"'";
+		log.info(query);
+		try (Connection conn = DBConfigUtil.getConnection();
+			 Statement stmt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+			 ResultSet rs = stmt.executeQuery(query);) {
+//			rs.next();
+			if (rs.first()) {
+				actorDao.setId(rs.getInt("actor_id"));
+				actorDao.setFirstName(rs.getString("first_name"));
+				actorDao.setLastName(rs.getString("last_name"));
+				actorDao.setUpdateOn(rs.getString("last_update"));
+				log.info("Data - {}", actorDao.toString());
+			}
+		} catch (SQLException e) {
+			log.error("Exception Strack Trace - {}", e);
+			throw e;
+		}
+		return actorDao;
+	}
+
+	public ActorDAO executeCRUDOperation(String id) throws SQLException {
+		ActorDAO actorDao = new ActorDAO();
+		String query = "SELECT * FROM ACTOR where ACTOR_ID=" + id;
 		log.info(query);
 		try (Connection conn = DBConfigUtil.getConnection();
 				Statement stmt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
 				ResultSet rs = stmt.executeQuery(query);) {
 //			rs.next();
 			if (rs.first()) {
-				personDao.setId(rs.getInt("person_instanz"));
-				log.info("Person - {}", personDao.toString());
+				actorDao.setId(rs.getInt("actor_id"));
+				log.info("Actor - {}", actorDao.toString());
 			}
 
 			// Additional operation that can be performed are as below.
 			// Insert data
-			String insertQuery = "insert into person values (3,'Sachin','Tendulkar','sachin@atrangi.com');";
+			String insertQuery = "insert into sakila.actor (first_name, last_name, last_update) values ('Sachin','Tendulkar',now());";
 			int rowsInserted = stmt.executeUpdate(insertQuery);
 			System.out.println("Rows inserted: " + rowsInserted);
 
 			// Update data
-			String updateQuery = "UPDATE person SET firstname = 'Rohit', lastname='Sharma' WHERE id = 1";
+			String updateQuery = "UPDATE actor SET first_name = 'Rohit', last_name='Sharma' WHERE actor_id = 200";
 			int rowsUpdated = stmt.executeUpdate(updateQuery);
 			System.out.println("Rows updated: " + rowsUpdated);
 
 			// Delete data
-			String deleteQuery = "DELETE FROM person WHERE id = 2";
+			ActorDAO actorDAO = getDataByName("Sachin");
+			String deleteQuery = "DELETE FROM actor WHERE actor_id = " + actorDAO.getId();
 			int rowsDeleted = stmt.executeUpdate(deleteQuery);
 			System.out.println("Rows deleted: " + rowsDeleted);
 		} catch (SQLException e) {
 			log.error("Exception Strack Trace - {}", e);
 			throw e;
 		}
-		return personDao;
+		return actorDao;
 
 	}
 

@@ -13,10 +13,18 @@ import lombok.extern.slf4j.Slf4j;
  */
 @Slf4j
 public class DBConfigUtil {
-	
-	final static String DB_URL = "jdbc:oracle:thin:@localhost:1521:XE";
-	final static String USER = "C##springtechappdb";
-	final static String PASS = "C##springtechappdb";
+
+	/*
+	For Oracle:
+		DB_URL = "jdbc:oracle:thin:@localhost:1521:XE";
+		USER = "C##springtechappdb";
+		PASS = "C##springtechappdb";
+	For MySQL:
+		DB_URL = "jdbc:mysql://localhost:3306/sakila";
+	 */
+	final static String DB_URL = "jdbc:mysql://localhost:3306/sakila";
+	final static String USER = "root";
+	final static String PASS = "root";
 	
 	public static Connection getConnection() throws SQLException {
 		

@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.tech.app.common.pojo.Status;
-import com.tech.app.jdbc.dto.PersonDTO;
+import com.tech.app.jdbc.dto.ActorDTO;
 import com.tech.app.jdbc.service.JavaJdbcService;
 
 import io.swagger.v3.oas.annotations.Operation;
@@ -42,11 +42,11 @@ public class JavaJDBCController {
 	 * 
 	 */
 	@GetMapping("/jdbc/java/data/{id}")
-	@Operation(summary = "Get the person details")
+	@Operation(summary = "Get the Actor details")
 	@ApiResponses(value = {
-			@ApiResponse(responseCode = "200", description = "Fetch Person Details for given id", content = {
-					@Content(mediaType = "application/json", schema = @Schema(implementation = PersonDTO.class)) }) })
-	public PersonDTO getDataUsingJavaJDBC(@PathVariable("id") int id) throws Exception {
+			@ApiResponse(responseCode = "200", description = "Fetch Actor Details for given id", content = {
+					@Content(mediaType = "application/json", schema = @Schema(implementation = ActorDTO.class)) }) })
+	public ActorDTO getDataUsingJavaJDBC(@PathVariable("id") int id) throws Exception {
 		log.info("getDataUsingJavaJDBC(), id - {}", id);
 		return javaJDBCService.getDataUsingJavaJDBC(id);
 	}
@@ -58,12 +58,12 @@ public class JavaJDBCController {
 	 * 
 	 */
 	@GetMapping("/jdbc/java/crud/operations")
-	@Operation(summary = "Get the person details")
+	@Operation(summary = "Get the Actor details")
 	@ApiResponses(value = {
-			@ApiResponse(responseCode = "200", description = "Fetch Person Details for given id", content = {
-					@Content(mediaType = "application/json", schema = @Schema(implementation = PersonDTO.class)) }) })
-	public PersonDTO executeCRUDOperation() throws Exception {
-		String id = "pt249387";
+			@ApiResponse(responseCode = "200", description = "Fetch Actor Details for given id", content = {
+					@Content(mediaType = "application/json", schema = @Schema(implementation = ActorDTO.class)) }) })
+	public ActorDTO executeCRUDOperation() throws Exception {
+		String id = "200";
 		log.info("executeCRUDOperation(), id - {}", id);
 		return javaJDBCService.executeCRUDOperation(id);
 	}
@@ -75,9 +75,9 @@ public class JavaJDBCController {
 	 * 
 	 */
 	@GetMapping("/jdbc/java/transcation/example")
-	@Operation(summary = "Get the person details")
+	@Operation(summary = "Get the Actor details")
 	@ApiResponses(value = {
-			@ApiResponse(responseCode = "200", description = "Fetch Person Details for given id", content = {
+			@ApiResponse(responseCode = "200", description = "Fetch Actor Details for given id", content = {
 					@Content(mediaType = "application/json", schema = @Schema(implementation = Status.class)) }) })
 	public Status executeTxExample() throws Exception {
 		log.info("executeTxExample()");

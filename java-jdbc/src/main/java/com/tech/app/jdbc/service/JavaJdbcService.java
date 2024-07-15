@@ -7,15 +7,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.tech.app.exception.NotFoundException;
-import com.tech.app.jdbc.dao.PersonDAO;
-import com.tech.app.jdbc.dto.PersonDTO;
+import com.tech.app.jdbc.dao.ActorDAO;
+import com.tech.app.jdbc.dto.ActorDTO;
 import com.tech.app.jdbc.repository.JDBCTransactionExample;
 import com.tech.app.jdbc.repository.JavajdbcCURDRepositoryImpl;
 
 import lombok.extern.slf4j.Slf4j;
 
 /**
- * Service object to person related task
+ * Service object to Actor related task
  * 
  * @author Bhushan Bafna
  */
@@ -30,21 +30,21 @@ public class JavaJdbcService {
 	private JDBCTransactionExample jdbcTransactionExample;
 	
 	/**
-	 * Method to get connect to repository and fetch person details
+	 * Method to get connect to repository and fetch Actor details
 	 * 
 	 * @param id
 	 * @return
 	 * @throws SQLException 
 	 * @throws Exception
 	 */
-	public PersonDTO getDataUsingJavaJDBC(int id) throws SQLException  {
-		PersonDAO personDao = javajdbcDaoImpl.getData(id);
-		PersonDTO personDto = new PersonDTO();
-		BeanUtils.copyProperties(personDao, personDto);
-		log.info("personDto - {}", personDto.toString());
-		if (personDto.getId() == 0)
-			throw new NotFoundException("NOTFOUND", "Person Details not found");
-		return personDto;
+	public ActorDTO getDataUsingJavaJDBC(int id) throws SQLException  {
+		ActorDAO actorDao = javajdbcDaoImpl.getDataByID(id);
+		ActorDTO actorDto = new ActorDTO();
+		BeanUtils.copyProperties(actorDao, actorDto);
+		log.info("actorDto - {}", actorDto.toString());
+		if (actorDto.getId() == 0)
+			throw new NotFoundException("NOTFOUND", "Actor Details not found");
+		return actorDto;
 	}
 
 	/**
@@ -52,24 +52,24 @@ public class JavaJdbcService {
 	 *
 	 * @param id
 	 * @return 
-	 * PersonDTO
+	 * ActorDTO
 	 * @throws SQLException 
 	 */
-	public PersonDTO executeCRUDOperation(String id) throws SQLException {
-		PersonDAO personDao = javajdbcDaoImpl.executeCRUDOperation(id);
-		PersonDTO personDto = new PersonDTO();
-		BeanUtils.copyProperties(personDao, personDto);
-		log.info("personDto - {}", personDto.toString());
-		if (personDto.getId() == 0)
-			throw new NotFoundException("NOTFOUND", "Person Details not found");
-		return personDto;
+	public ActorDTO executeCRUDOperation(String id) throws SQLException {
+		ActorDAO actorDao = javajdbcDaoImpl.executeCRUDOperation(id);
+		ActorDTO actorDto = new ActorDTO();
+		BeanUtils.copyProperties(actorDao, actorDto);
+		log.info("actorDto - {}", actorDto.toString());
+		if (actorDto.getId() == 0)
+			throw new NotFoundException("NOTFOUND", "Data not found");
+		return actorDto;
 	}
 
 	/**
 	 * This method
 	 *
 	 * @return 
-	 * PersonDTO
+	 * ActorDTO
 	 * @throws SQLException 
 	 */
 	public String executeTxExample() throws SQLException {

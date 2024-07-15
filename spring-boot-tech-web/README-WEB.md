@@ -1,4 +1,4 @@
-#My Spring Web Application
+# My Spring Web Application
 
 This Application is created using the spring-boot-starter-web as an dependency instead of using the spring-boot-starter
 

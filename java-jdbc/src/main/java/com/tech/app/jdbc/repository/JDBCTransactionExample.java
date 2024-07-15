@@ -3,6 +3,7 @@ package com.tech.app.jdbc.repository;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.util.Date;
 
 import org.springframework.stereotype.Repository;
 
@@ -21,13 +22,14 @@ public class JDBCTransactionExample {
 
 			// Perform multiple database operations within a transaction
 			insertEmployee(connection);
-			updateEmployeeAge(connection);
+			updateEmployeeName(connection);
 
 			// Commit the transaction if all operations succeed
 			connection.commit();
 			log.info("Transaction committed successfully!");
 			return "Transaction committed successfully!";
 		} catch (SQLException e) {
+			e.printStackTrace();
 			log.error("Exception Strack Trace - {}", e.getMessage());
 			rollbackTransaction(connection);
 			throw e;
@@ -37,25 +39,24 @@ public class JDBCTransactionExample {
 	}
 
 	private static void insertEmployee(Connection connection) throws SQLException {
-		String insertQuery = "INSERT INTO PERSON_EVENT (PER_INSTANZ, PER_INSTANZIERUNG, PER_APPLICATION, PER_NPERSON_ID, PER_EVENT_NAME, PER_STARTED, PER_FINISHED, PER_STATE)"
-				+ "values (?, sysdate, 'NSI', 'p100001', 'NSI', sysdate, sysdate, 0)";
+		String insertQuery = "insert into sakila.actor (first_name, last_name, last_update) values ('Sachin','Tendulkar',now());";
 		try (PreparedStatement statement = connection.prepareStatement(insertQuery)) {
-			statement.setInt(1, 2);
+//			statement.setInt(1, 2);
 			statement.executeUpdate();
-			log.info("Employee inserted successfully!");
+			log.info("Data inserted successfully!");
 		}
 //		log.info("Explicit Exception Thrown!");
 //		throw new SQLException("Explicit Exception Thrown!");
 	}
 
-	private static void updateEmployeeAge(Connection connection) throws SQLException {
-		String updateQuery = "UPDATE PERSON_EVENT SET PER_NPERSON_ID = ? WHERE PER_INSTANZ = ?";
+	private static void updateEmployeeName(Connection connection) throws SQLException {
+		String updateQuery = "UPDATE ACTOR SET FIRST_NAME = ? WHERE ACTOR_ID = ?";
 		try (PreparedStatement statement = connection.prepareStatement(updateQuery)) {
-			statement.setString(1, "p110011");
-			statement.setInt(2, 2);
+			statement.setString(1, "Arjun");
+			statement.setInt(2, 200);
 			int rowsUpdated = statement.executeUpdate();
 			if (rowsUpdated > 0) {
-				log.info("Employee id updated successfully!");
+				log.info("Record id updated successfully!");
 			} else {
 				throw new SQLException("Employee not found!");
 			}
@@ -79,6 +80,7 @@ public class JDBCTransactionExample {
 				connection.close();
 				log.info("Connection Closed!");
 			} catch (SQLException e) {
+				e.printStackTrace();
 				log.error("Exception Strack Trace - {}", e.getMessage());
 				throw e;
 			}

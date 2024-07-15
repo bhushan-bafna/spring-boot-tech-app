@@ -24,7 +24,6 @@ import lombok.extern.slf4j.Slf4j;
  * Tech App Rest Controller Class providing the information about the App
  * 
  * @author Bhushan Bafna
- *
  */
 @RestController
 @RequestMapping("/app")
