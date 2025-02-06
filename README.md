@@ -10,4 +10,4 @@ Modules:
  - spring-boot-generic-ex-handle - Module to showcase example for global exception handling
  - spring-boot-tech-aop - Module to showcase example for Spring AOP
 
------------------------------------------------------------------------
+-------------------------------------------------------------------------

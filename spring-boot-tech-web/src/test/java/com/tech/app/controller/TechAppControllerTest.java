@@ -36,7 +36,6 @@ public class TechAppControllerTest {
 	@MockBean
 	private TechAppController techAppController;
 
-	@SuppressWarnings("unused")
 	@Test
 	public void testGetAppName() throws Exception {
 		AppDetails expected = new AppDetails("Tech App API", "1.0");
