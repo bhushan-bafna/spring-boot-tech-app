@@ -76,7 +76,7 @@ public class GlobalControllerExceptionHandler {
 	@ApiResponses(value = { @ApiResponse(responseCode = "500", description = "Generic exception occured", content = {
 			@Content(mediaType = "application/json", schema = @Schema(implementation = ErrorResponse.class)) }) })
 	public ResponseEntity<ErrorResponse> handleBookNotFound(Exception ex) {
-		log.info("Generic Excetion in handler");
+		log.error("Generic Excetion in handler: ", ex);
 		ErrorResponse error = new ErrorResponse();
 		error.setCode("GENERIC");
 		error.setMessage("Generic Exception");

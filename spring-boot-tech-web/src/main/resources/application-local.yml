@@ -7,5 +7,7 @@ info:
   app:
     name: Spring Boot Usage Application
     description: This is to showcase example for different features and modules in spring
-    
-  
+  build:
+    name: '@project.name@'
+    artifact: '@project.artifactId@'
+    version: '@project.version@'

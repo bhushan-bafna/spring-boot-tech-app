@@ -22,3 +22,16 @@ maven:
 project:
   name: ${maven.project.name} Main
   version: '@project.version@'
+
+management:
+  #To enable actuator
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    health  :
+      show-details: always
+  info:
+    env:
+      enabled: true
